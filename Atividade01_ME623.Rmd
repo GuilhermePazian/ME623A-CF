@@ -1,0 +1,43 @@
+---
+title: "Atividade 01 - ME623A - Planejamento e Pesquisa"
+author: "Guilherme Pazian e Eliane Ramos de Siqueira"
+date: "Friday, September 02, 2016"
+output: pdf_document
+---
+
+Queremos testar se as médias dos pontos obtidos com a mão esquerda e com a mão direita são iguais, então:
+$$
+H_0 : \mu_d = \mu_e
+$$
+\centerline{VS}
+$$
+H_1 : \mu_d \neq \mu_e
+$$
+
+Sendo:
+  
+  **$\mu_d$** a média populacional de pontos obtidos usando a mão direita.  
+  **$\mu_e$** a média populacional de pontos obtidos usando a mão esquerda.  
+  
+  
+  
+Temos duas medições para cada UE de maneira que estes dados são pareados. Temos 20 UE's amostrados. Estamos supondo que os dados vêm de populações normais e que $\sigma_d = \sigma_e$. Então devemos utilizar, neste caso, o teste T Pareado assumindo que as variâncias populacionais são iguais:
+  
+  
+
+```{r LerCSV, results= "hide"}
+alfa = 0.05
+#setwd(choose.dir()) #escolha o seu diretório
+amostra = read.csv("lateral.csv")
+teste = t.test(amostra$dados.d,amostra$dados.e,paired = TRUE,var.equal = TRUE)
+pvalor = teste$p.value
+```
+  
+
+```{r}
+teste
+```
+  
+O código acima executa o teste de hipótese explicitado anteriormente.  
+  
+Temos como resultado: p-valor $\approx$ **`r round(pvalor*100,2)`%** então **`r ifelse(pvalor<alfa,"Rejeitamos","Não Rejeitamos")`** a Hipótese nula de que as médias populacionais dos pontos obtidos com a mão esquerda e com a mão direita são iguais.
