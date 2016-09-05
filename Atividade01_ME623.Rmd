@@ -2,7 +2,7 @@
 title: "Atividade 01 - ME623A - Planejamento e Pesquisa"
 author: "Guilherme Pazian e Eliane Ramos de Siqueira"
 date: "Friday, September 02, 2016"
-output: pdf_document
+output: html_document
 ---
 
 Queremos testar se as médias dos pontos obtidos com a mão esquerda e com a mão direita são iguais, então:
@@ -41,3 +41,30 @@ teste
 O código acima executa o teste de hipótese explicitado anteriormente.  
   
 Temos como resultado: p-valor $\approx$ **`r round(pvalor*100,2)`%** então **`r ifelse(pvalor<alfa,"Rejeitamos","Não Rejeitamos")`** a Hipótese nula de que as médias populacionais dos pontos obtidos com a mão esquerda e com a mão direita são iguais.
+
+
+
+#Cálculo passo a passo
+ Sob a Hipótese nula:
+$$
+X_d - X_e = Y \sim N(0,\sigma^2_y)
+$$
+onde $\sigma^2_d = \sigma^2_e = \sigma^2_d$ e $n = n_d + n_e$
+
+Estatística do teste:
+$$
+\frac{\bar{Y}-0}{\sqrt{\frac{\sigma^2_y}{n}}} = T
+$$
+```{r ,results= "hide"}
+ny = 20
+nxy = 40
+diferenca = amostra$dados.d-amostra$dados.e
+varY = var(diferenca)
+T = mean(diferenca)/sqrt((varY)*(1/ny+1/ny))
+T
+p.valor = pt(T,ny-1)
+p.valor
+```
+
+
+`r p.valor`  e t =  `r T`
