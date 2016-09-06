@@ -1,7 +1,7 @@
 ---
 title: "Atividade 01 - ME623A - Planejamento e Pesquisa"
-author: "Guilherme Pazian e Eliane Ramos de Siqueira"
-date: "Friday, September 02, 2016"
+author: "Guilherme Pazian RA:160323 e Eliane Ramos de Siqueira RA:155233"
+date: "Segunda, 2 de Setembro de 2016"
 output: pdf_document
 ---
 
