@@ -69,7 +69,7 @@ p.valor = 1 - pt(abs(T),ny-1) + pt(-abs(T),ny-1)
 p.valor
 ```
 
-Substituindo os valores na estatística de teste escolhida, obtemos:
+Substituindo os valores na estatística de teste escolhida, obtemos a um um nível de significância de *0.05*:
 
 $$
 T =\frac{`r round(mean(diferenca),3)`}{\sqrt{\frac{`r round(varY,3)`}{`r ny`}}} = `r round(T,3)`
@@ -82,7 +82,7 @@ $$
 P(T>\left | t \right |) + P(T<-\left | t \right |) = 1 - P(T<\left | t \right |) + P(T<-\left | t \right |) = `r p.valor`
 $$
 
-Temos uma probabilidade de $`r p.valor`$ de se obter uma estatística de teste igual ou mais extrema que a que observamos na amostra, sob a hipótese nula.
+Temos uma probabilidade de **$`r p.valor`$** de se obter uma estatística de teste igual ou mais extrema que a que observamos na amostra, sob a hipótese nula.
 
 
 #Cálculo utilizando função *"t.test"*
@@ -99,6 +99,6 @@ teste
 Utilizando a função *t.test*, temos como resultado um p-valor $\approx$ **`r round(pvalor*100,2)`%** o que indica que temos fortes evidências para **`r ifelse(pvalor<alfa,"Rejeitarmos","Não Rejeitarmos")`** a hipótese nula de que as médias populacionais dos pontos obtidos com a mão direita e com a mão esquerda são iguais.
 
 #Conclusão Geral
-Pode-se observar que em ambos os métodos (cálculo manual e cálculo via função t.test) obtemos os mesmos resultados, ou seja, um *$t_obs=5.195$* e um *$p.valor=5.148e^-05$*, como o *$p.valor$* é extremamente baixo, podemos afirmar que temos fortes evidências contra a hipótese nula de que o não existe diferença de performance entre a mão direita e a mão esquerda no teste de lateralidade.
+Pode-se observar que em ambos os métodos (cálculo manual e cálculo via função t.test) obtemos os mesmos resultados, ou seja, um **$t_obs=5.195$** e um **$p.valor=5.148e^-05$**, como o **$p.valor$** é extremamente baixo, podemos afirmar com um nivel de confiança de *95%* que temos fortes evidências contra a hipótese nula de que o não existe diferença de performance entre a mão direita e a mão esquerda no teste de lateralidade.
 
 
