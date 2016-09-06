@@ -2,7 +2,7 @@
 title: "Atividade 01 - ME623A - Planejamento e Pesquisa"
 author: "Guilherme Pazian e Eliane Ramos de Siqueira"
 date: "Friday, September 02, 2016"
-output: html_document
+output: pdf_document
 ---
 
 Queremos testar se as médias dos pontos obtidos com a mão esquerda e com a mão direita são iguais, então:
@@ -22,19 +22,72 @@ Sendo:
   
   
 Temos duas medições para cada UE de maneira que estes dados são pareados. Temos 20 UE's amostrados. Estamos supondo que os dados vêm de populações normais e que $\sigma_d = \sigma_e$. Então devemos utilizar, neste caso, o teste T Pareado assumindo que as variâncias populacionais são iguais:
-  
-  
 
-```{r LerCSV, results= "hide"}
+Realizamos o teste manualmente (passo a passo) e conferimos o resultado com a função *$t.test$* dísponivel.
+
+```{r Lendo conjunto de dados, results= "hide"}
 alfa = 0.05
 #setwd(choose.dir()) #escolha o seu diretório
 amostra = read.csv("lateral.csv")
-teste = t.test(amostra$dados.d,amostra$dados.e,paired = TRUE,var.equal = TRUE)
-pvalor = teste$p.value
+amostra
 ```
+
+#Cálculo manualmente (passo a passo):
+
+Sob a Hipótese nula temos que
+ 
+$$
+X_d - X_e = Y \sim N(0,\sigma^2_y)
+$$
+onde $\sigma^2_y = \sigma^2_e + \sigma^2_d$ e $n = n_d + n_e$
+
+##Estatística do teste:
+
+A estatística do teste utilizada foi:
+
+$$
+T=\frac{\bar{X_d}-\bar{Y_d}-(\mu_d-\mu_e)}{\sqrt{\frac{\sigma^2_y}{n}}}
+$$
+
+onde:
+
+$\bar{X_d}$: Média amostral de acertos com a mão direira  
+$\bar{Y_e}$: Média amostral de acertos com a mão esquerda    
+$\mu_d$: Média populacional de acertos com a mão direita     
+$\mu_e$:Média populacional de acertos com a mão esquerda
+
+
+
+Utilizando os valores da nossa amostra, obtemos que
+
+```{r ,results= "hide"}
+ny = 20
+diferenca = amostra$dados.d-amostra$dados.e
+varY = var(diferenca)
+T = mean(diferenca)/sqrt(varY/ny)
+T
+p.valor = 1 - pt(abs(T),ny-1) + pt(-abs(T),ny-1)
+p.valor
+```
+
+$$
+T =\frac{`r round(mean(diferenca),3)`}{\sqrt{\frac{`r round(varY,3)`}{`r ny`}}} = `r round(T,3)`
+$$
+
+
+##Cálculo do P-Valor
+
+$$
+P(T>\left | t \right |) + P(T<-\left | t \right |) = 1 - P(T<\left | t \right |) + P(T<-\left | t \right |) = `r p.valor`
+$$
+
+
+#Cálculo utilizando função *"t.test"*
   
 
 ```{r}
+teste = t.test(amostra$dados.d,amostra$dados.e,paired = TRUE,var.equal = TRUE)
+pvalor = teste$p.value
 teste
 ```
   
@@ -42,29 +95,6 @@ O código acima executa o teste de hipótese explicitado anteriormente.
   
 Temos como resultado: p-valor $\approx$ **`r round(pvalor*100,2)`%** então **`r ifelse(pvalor<alfa,"Rejeitamos","Não Rejeitamos")`** a Hipótese nula de que as médias populacionais dos pontos obtidos com a mão esquerda e com a mão direita são iguais.
 
+#Conclusão
+Pode-se observar que em ambos os métodos (cálculo manual e cálculo via função no R) obtemos exatamente os mesmos resultados, ou seja, a função t.test no R faz exatamente os cálculos apropriados para a situação.
 
-
-#Cálculo passo a passo
- Sob a Hipótese nula:
-$$
-X_d - X_e = Y \sim N(0,\sigma^2_y)
-$$
-onde $\sigma^2_d = \sigma^2_e = \sigma^2_d$ e $n = n_d + n_e$
-
-Estatística do teste:
-$$
-\frac{\bar{Y}-0}{\sqrt{\frac{\sigma^2_y}{n}}} = T
-$$
-```{r ,results= "hide"}
-ny = 20
-nxy = 40
-diferenca = amostra$dados.d-amostra$dados.e
-varY = var(diferenca)
-T = mean(diferenca)/sqrt((varY)*(1/ny+1/ny))
-T
-p.valor = pt(T,ny-1)
-p.valor
-```
-
-
-`r p.valor`  e t =  `r T`
