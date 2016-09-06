@@ -29,7 +29,6 @@ Realizamos o teste manualmente (passo a passo) e conferimos o resultado com a fu
 alfa = 0.05
 #setwd(choose.dir()) #escolha o seu diretório
 amostra = read.csv("lateral.csv")
-amostra
 ```
 
 #Cálculo manualmente (passo a passo):
@@ -70,6 +69,8 @@ p.valor = 1 - pt(abs(T),ny-1) + pt(-abs(T),ny-1)
 p.valor
 ```
 
+Substituindo os valores na estatística de teste escolhida, obtemos:
+
 $$
 T =\frac{`r round(mean(diferenca),3)`}{\sqrt{\frac{`r round(varY,3)`}{`r ny`}}} = `r round(T,3)`
 $$
@@ -81,9 +82,12 @@ $$
 P(T>\left | t \right |) + P(T<-\left | t \right |) = 1 - P(T<\left | t \right |) + P(T<-\left | t \right |) = `r p.valor`
 $$
 
+Temos uma probabilidade de $`r p.valor`$ de se obter uma estatística de teste igual ou mais extrema que a que observamos na amostra, sob a hipótese nula.
+
 
 #Cálculo utilizando função *"t.test"*
   
+O código abaixo executa o teste de hipótese explicitado anteriormente.  
 
 ```{r}
 teste = t.test(amostra$dados.d,amostra$dados.e,paired = TRUE,var.equal = TRUE)
@@ -91,10 +95,10 @@ pvalor = teste$p.value
 teste
 ```
   
-O código acima executa o teste de hipótese explicitado anteriormente.  
-  
-Temos como resultado: p-valor $\approx$ **`r round(pvalor*100,2)`%** então **`r ifelse(pvalor<alfa,"Rejeitamos","Não Rejeitamos")`** a Hipótese nula de que as médias populacionais dos pontos obtidos com a mão esquerda e com a mão direita são iguais.
 
-#Conclusão
-Pode-se observar que em ambos os métodos (cálculo manual e cálculo via função no R) obtemos exatamente os mesmos resultados, ou seja, a função t.test no R faz exatamente os cálculos apropriados para a situação.
+Utilizando a função *t.test*, temos como resultado um p-valor $\approx$ **`r round(pvalor*100,2)`%** o que indica que temos fortes evidências para **`r ifelse(pvalor<alfa,"Rejeitarmos","Não Rejeitarmos")`** a hipótese nula de que as médias populacionais dos pontos obtidos com a mão direita e com a mão esquerda são iguais.
+
+#Conclusão Geral
+Pode-se observar que em ambos os métodos (cálculo manual e cálculo via função t.test) obtemos os mesmos resultados, ou seja, um *$t_obs=5.195$* e um *$p.valor=5.148e^-05$*, como o *$p.valor$* é extremamente baixo, podemos afirmar que temos fortes evidências contra a hipótese nula de que o não existe diferença de performance entre a mão direita e a mão esquerda no teste de lateralidade.
+
 
