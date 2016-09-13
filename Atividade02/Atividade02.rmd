@@ -1,0 +1,7 @@
+---
+title: "Atividade02"
+author: "Eliane Ramos de Siqueira RA 155233  e Guilherme Pazian RA160323"
+date: "13 de setembro de 2016"
+output: pdf_document
+---
+
