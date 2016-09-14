@@ -1,7 +1,73 @@
 ---
-title: "Atividade02"
-author: "Eliane Ramos de Siqueira RA 155233  e Guilherme Pazian RA160323"
-date: "13 de setembro de 2016"
-output: pdf_document
+title: "Atividade 2 - ME623 - Planejamento e Pesquisa"
+author: "Eliane Ramos de Siqueira e Guilherme Pazian"
+date: "14 de setembro de 2016"
+output: html_document
 ---
+Foi realizado um experimento para comparar três terapias no tratamento de anorexia em meninas adolescentes para ajudá-las a ganhar peso. 
+As terapias foram: controle, cognitiva comportamental e de família, são 17 meninas em cada grupo.
+
+A variável de interesse é ganho de peso (em libras).
+
+```{r leitura dos dados, echo=FALSE}
+#setwd(choose.dir())
+dados = read.table("DadosAnorexia.txt",sep = "\t",header=TRUE)
+library(knitr)
+```
+
+#Tabela ANOVA
+```{r}
+anorexia <- lm(ganho ~ grupo, data=dados)
+tblanova <- anova(anorexia)
+kable(tblanova)
+```
+
+#Estimativas dos Parâmetros
+```{r}
+sumario <- summary(anorexia)
+a<- data.frame(sumario$coefficients)
+kable(a)
+```
+
+Abaixo estão as estimativas das médias nos respectivos tratamentos e a estimativa da média global:
+
+```{r, echo=FALSE}
+Tal <- a$Estimate
+estimativas<- c(Tal[1],Tal[2]+Tal[1],Tal[3]+Tal[1],(3*Tal[1]+Tal[2]+Tal[3])/3)
+names(estimativas)<-c("A-controle","B-cognitiva","C-familia","Global")
+#estimativas
+```
+
+```{r}
+
+media.grupo = aggregate(dados$ganho~dados$grupo, FUN = mean)
+desvio.grupo = aggregate(dados$ganho~dados$grupo, FUN = sd)
+tabd = data.frame(media.grupo,desvio.grupo$`dados$ganho`)
+names(tabd) = c("grupo","media","desvio")
+kable(tabd)
+
+```
+
+```{r boxplot dos dados, echo=FALSE}
+
+boxplot(ganho~grupo,data=dados,col="blue")
+
+```
+
+
+Abaixo estão as estimativas dos incrementos em cada grupo:
+
+```{r}
+names(Tal)<-names(estimativas)<-c("A-controle","B-cognitiva","C-familia")
+kable(Tal)
+```
+
+
+
+#Análise dos Resíduos
+
+```{r, echo=FALSE}
+par(mfrow=c(2,2))
+plot(anorexia)
+```
 
