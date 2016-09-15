@@ -1,12 +1,10 @@
 ---
 title: "Atividade 2 - ME623 - Planejamento e Pesquisa"
-author: "Eliane Ramos de Siqueira e Guilherme Pazian"
+author: "Eliane Ramos de Siqueira 155233 e Guilherme Pazian 160323"
 date: "14 de setembro de 2016"
-output: html_document
+output: pdf_document
 ---
-Foi realizado um experimento para comparar três terapias no tratamento de anorexia em meninas adolescentes para ajudá-las a ganhar peso. 
-As terapias foram: controle, cognitiva comportamental e de família, são 17 meninas em cada grupo.
-
+  Foi realizado um experimento para comparar três terapias no tratamento de anorexia em meninas adolescentes para ajudá-las a ganhar peso.As terapias foram: controle, cognitiva comportamental e de família, são 17 meninas em cada grupo.
 A variável de interesse é ganho de peso (em libras).
 
 ```{r leitura dos dados, echo=FALSE}
@@ -15,54 +13,60 @@ dados = read.table("DadosAnorexia.txt",sep = "\t",header=TRUE)
 library(knitr)
 ```
 
-#Tabela ANOVA
-```{r}
+```{r,echo=FALSE}
 anorexia <- lm(ganho ~ grupo, data=dados)
 tblanova <- anova(anorexia)
+```
+
+
+```{r, echo=FALSE}
+sumario <- summary(anorexia)
+a<- data.frame(sumario$coefficients)
+```
+
+```{r, echo=FALSE}
+Tal <-data.frame(a$Estimate,a$Std..Error)
+```
+
+```{r, echo=FALSE}
+media.grupo = aggregate(dados$ganho~dados$grupo, FUN = mean)
+desvio.grupo = aggregate(dados$ganho~dados$grupo, FUN = sd)
+tabd = data.frame(media.grupo,desvio.grupo$`dados$ganho`,Tal)
+names(tabd) = c("grupo","média","Desvio Padrão","Incremento","Desvio Padrão do Erro")
+```
+##Visualização dos dados
+```{r,echo=FALSE}
+b<-data.frame(media.grupo,desvio.grupo$`dados$ganho`)
+names(b) = c("grupo","média","Desvio Padrão")
+kable(b)
+```
+
+```{r boxplot dos dados, echo=FALSE,fig.width=4.5,fig.height=3.2,fig.align='center'}
+boxplot(ganho~grupo,data=dados,col="darkblue")
+```
+Observando o boxplot e também observando que os desvios padrões dos grupos diferem pouco, então é razoavel supor que as variâncias são constantes e assim aplicar a ANOVA. 
+
+##Tabela ANOVA
+```{r,eval=FALSE}
+anorexia <- lm(ganho ~ grupo, data=dados)
+tblanova <- anova(anorexia)
+```
+
+```{r, echo=FALSE}
 kable(tblanova)
 ```
 
-#Estimativas dos Parâmetros
-```{r}
-sumario <- summary(anorexia)
-a<- data.frame(sumario$coefficients)
-kable(a)
+```{r, results='hide', echo=FALSE}
+pvalor = tblanova$`Pr(>F)`[1]
 ```
+Dado o p-valor calculado `r round(pvalor,4)`, a um nível de 95% de confiança, temos evidências suficiêntes para rejeitar a hipótese nula de que as médias das três populações são iguais.
 
-Abaixo estão as estimativas das médias nos respectivos tratamentos e a estimativa da média global:
+##Estimativas dos Parâmetros
 
-```{r, echo=FALSE}
-Tal <- a$Estimate
-estimativas<- c(Tal[1],Tal[2]+Tal[1],Tal[3]+Tal[1],(3*Tal[1]+Tal[2]+Tal[3])/3)
-names(estimativas)<-c("A-controle","B-cognitiva","C-familia","Global")
-#estimativas
-```
-
-```{r}
-
-media.grupo = aggregate(dados$ganho~dados$grupo, FUN = mean)
-desvio.grupo = aggregate(dados$ganho~dados$grupo, FUN = sd)
-tabd = data.frame(media.grupo,desvio.grupo$`dados$ganho`)
-names(tabd) = c("grupo","media","desvio")
+Abaixo estão as estimativas da média, do Desvio Padrão, do Incremento e do Desvio Padrão do Erro para cada grupo.
+```{r,echo=FALSE}
 kable(tabd)
-
 ```
-
-```{r boxplot dos dados, echo=FALSE}
-
-boxplot(ganho~grupo,data=dados,col="blue")
-
-```
-
-
-Abaixo estão as estimativas dos incrementos em cada grupo:
-
-```{r}
-names(Tal)<-names(estimativas)<-c("A-controle","B-cognitiva","C-familia")
-kable(Tal)
-```
-
-
 
 #Análise dos Resíduos
 
@@ -70,4 +74,7 @@ kable(Tal)
 par(mfrow=c(2,2))
 plot(anorexia)
 ```
+
+O gráfico superior direito revela que os quantis da distribuição normalizada dos resíduos são muito próximos aos quantis teóricos da distribuição normal, o que nos dá uma boa indicação de que os resíduos vieram de fato de uma distribuição normal. Os gráficos da diagonal principal não nos indicam nenhuma tendencia e também nenhuma diferença significativa entre as variabilidades dentro de cada grupo, então a partir disso, é razoalvel admitir que os erros são independentes e homocedásticos.  
+Portanto, com base na observação dos gráficos acima, podemos concluir que é razoável considerar que as suposições para o modelo são válidas.
 
