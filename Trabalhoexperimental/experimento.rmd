@@ -5,7 +5,42 @@ date: "22 de novembro de 2016"
 output: html_document
 ---
 
-Nos dia atuais muito se fala sobre os efeitos do alcool em relação à nosso capacidade de reação. Um ponto importante a se saber é se a perda (ou ganho) da capacidade de reação de uma pessoa que ingeriu álcool é influênciada somente pela quantidade de álcool ingerida ou se existem outros fatores que influênciam significativamente esta relação. Este trabalho têm como objetivo identificar se existe relação no tempo de reação entre sexos e entre 
+#Motivação
+
+  Nos dia atuais muito se fala sobre os efeitos do alcool em relação à nosso capacidade de reação (reflexo). Um ponto importante a se saber é se a perda (ou ganho) na capacidade de reação de uma pessoa que ingeriu álcool é influênciada somente pela quantidade de álcool ingerida ou se existem outros fatores que influênciam significativamente esta relação. 
+
+#Objetivo
+
+  Este trabalho têm como objetivo identificar se existe relação na capacidade de reação entre sexos e entre os fatores "ingestão de álcool e água de forma alternada", "ingestão de álcool e consumo de petiscos", "ingestão somente de álcool".
+
+#Planejamento
+  
+  A variável resposta capacidade de reação (reflexo) será mensurada por um teste de reflexo disponível em **"http://www.brainmetrix.com/reflex-test/"**. A medida será obtida a partir da diferença de pontos obtidos antes e depois da ingestão de alcool. Conforme informações disponíveis em **"http://www.cisa.org.br/artigo/5536/metabolismo-alcool.php"**, será respeitado a diferença de uma (1) hora entre o momento da ingestão do álcool e o inicio do (segundo) teste de reflexo, a fim de permitir a total absorção do álcool por parte do indivíduo.
+
+  Pesquisas anteriores indicam uma relação entre a quantidade absorvida de álcool com o porte físico da pessoa, porém a verificação e mensuração desta relação não é de interesse deste experimento, então devemos considerar essa relação como um ruido em nosso experimento. Usaremos como indicador para quantificar o porte físico de uma pessoa o IMC (Índice de Massa corporal), medida a qual leva em consideração o peso e a altura do individuo (IMC= Peso/(Altura)$^2$). Consideraremos no experimento faixas de IMC como fator ruído, (faixas segundo o site **"http://www.calculoimc.com.br/"**) a fim de tentar minimizar a influência da relação supracitada sobre o experimento.  
+  
+  Deve se ter em mente também que a alimentação, estilo de vida e genetica do indivíduo também podem representar influência nos resultados, porém dado as limitações financeiras, temporais e tecnológicas em que o experimento será realizado, nos atemos a somente tentar minimizar estes efeitos e não controla-los. Note que blocagem por indivíduo não é possível, dado que o sexo do indivíduo é um fator, então a medida adotada para minimizar estes efeitos será propor que os indivíduos participantes do experimento mantenham uma rotina similar (entre todos) nos dias, presente e anterior ao dia da realização do experimento. Dado o ambiente acadêmico em que estamos inseridos, definimos uma rotina a se seguida pelos participantes do experimento:
+  
+Alimentação: 
+  
+  Café da manhã: nos restaurantes Universitários por volta das 8:00 h.  
+  Almoço: nos restaurantes universitários por volta das 12:00 h.  
+  jantar: nos restaurantes universitários por volta das 18:30 h.  
+  
+Demais orientações:
+  
+  Não praticar exercícios físicos nestes dois dias.  
+  Dormir por volta de 8h no dia anterior ao experimento.
+  
+Em caso de impossibilidade de seguir as recomendações, os indivíduos deverão avisar os experimentadores para que uma observação quanto a isso seja feita no trabalho.
+
+#Delineamento experimental
+
+UE´s:  
+Fatores:  
+Tratamentos:  
+Blocos:  
+
 
 
 ```{r}
