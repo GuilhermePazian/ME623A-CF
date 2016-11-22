@@ -1,0 +1,14 @@
+---
+title: "Experimento Alcoolico"
+author: "Eliane Siqueira, Guilherme Pazian"
+date: "22 de novembro de 2016"
+output: html_document
+---
+
+Nos dia atuais muito se fala sobre os efeitos do alcool em relação à nosso capacidade de reação. Um ponto importante a se saber é se a perda (ou ganho) da capacidade de reação de uma pessoa que ingeriu álcool é influênciada somente pela quantidade de álcool ingerida ou se existem outros fatores que influênciam significativamente esta relação. Este trabalho têm como objetivo identificar se existe relação no tempo de reação entre sexos e entre 
+
+
+```{r}
+
+```
+
