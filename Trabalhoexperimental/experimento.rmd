@@ -44,14 +44,11 @@ kable(tab_imc)
   
   
 #Delineamento experimental
-Para realizar as análises, o delineamento que vamos utilizar é **Blocagem em Experimentos Fatoriais**., onde o experimento fatorial tem fois fatores, o fator A é o sexo do indivíduo e o fator B é tipo de ingestão. O fator A tem dois níveis, feminino e masculino, e o fator B tem 3 níveis, apenas ingerir alcool, ingerir alcool e beber água, ingerir e comer um petisco.
+Para realizar as análises, o delineamento que vamos utilizar é **Blocagem em Experimentos Fatoriais**., onde o experimento fatorial tem dois fatores, o fator A é o sexo do indivíduo e o fator B é tipo de ingestão.
 
-```{r, echo=FALSE}
-a<-c("Unidade Experimental", "Fatores de Interesse", "Fator Ruído", "Tratamento")
-b<-c("Individuo","Sexo e Tipo de Ingestão", "IMC","Teste de Reflexo")
-delineamento<-data.frame(a,b)
-kable(delineamento)
-```
+O fator A tem dois níveis, feminino e masculino, e o fator B tem 3 níveis, apenas ingerir alcool (1), ingerir alcool e beber água(2), ingerir e comer um petisco(3).
+
+O tratamento será o teste de reflexo.
 
 Dado o delineamento de experimento escolhido. Usaremos o seguinte modelo:
 
@@ -60,6 +57,8 @@ i=1,2,3\\
 j=1,2\\ 
 k=1,2
 \end{matrix}\right.$$
+
+onde $\delta_k$ representa o efeitos do k-ésimo IMC.
 
 Nossas observações serão dispostas da seguinte forma:
 
