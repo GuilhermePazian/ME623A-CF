@@ -1,49 +1,80 @@
 ---
 title: "Experimento Alcoolico"
-author: "Eliane Siqueira, Guilherme Pazian"
+author: "Eliane Siqueira RA:155233 e Guilherme Pazian RA:160323"
 date: "22 de novembro de 2016"
-output: html_document
+output: pdf_document
 ---
 
 #Motivação
-
-  Nos dia atuais muito se fala sobre os efeitos do alcool em relação à nosso capacidade de reação (reflexo). Um ponto importante a se saber é se a perda (ou ganho) na capacidade de reação de uma pessoa que ingeriu álcool é influênciada somente pela quantidade de álcool ingerida ou se existem outros fatores que influênciam significativamente esta relação. 
-
+  
+   Dezembro é o mês de festas, época em que há um grande aumento do consumo de alcool, o que levanta a velha discussão sobre os riscos decorrentes da ingestão de alcool. 
+    Um dos principais riscos decorrentes do consumo de alcool é a perda de reflexos, o que favorece a ocorrência de acidentes.
+    Contudo uma questão bastante relevante é se essa perda é decorrente somente da quantidade ingerida ou se há outros fatores que influenciam significativamente nessa perda. 
+    O nosso experimento propõe dois possíveis fatores: o sexo (masculino e feminino) e ingestão de alcool alternada (com água, petiscos). 
+    A idéia do nosso experimento é analisar o quão influente são esses fatores na perda de reflexo. E ver qual a combinação têm maior influência na perda de reflexo, ou se estes tratamentos são equivalentes quanto a perda de reflexo.
+    
 #Objetivo
 
   Este trabalho têm como objetivo identificar se existe relação na capacidade de reação entre sexos e entre os fatores "ingestão de álcool e água de forma alternada", "ingestão de álcool e consumo de petiscos", "ingestão somente de álcool".
 
 #Planejamento
   
-  A variável resposta capacidade de reação (reflexo) será mensurada por um teste de reflexo disponível em **"http://www.brainmetrix.com/reflex-test/"**. A medida será obtida a partir da diferença de pontos obtidos antes e depois da ingestão de alcool. Conforme informações disponíveis em **"http://www.cisa.org.br/artigo/5536/metabolismo-alcool.php"**, será respeitado a diferença de uma (1) hora entre o momento da ingestão do álcool e o inicio do (segundo) teste de reflexo, a fim de permitir a total absorção do álcool por parte do indivíduo.
-
-  Pesquisas anteriores indicam uma relação entre a quantidade absorvida de álcool com o porte físico da pessoa, porém a verificação e mensuração desta relação não é de interesse deste experimento, então devemos considerar essa relação como um ruido em nosso experimento. Usaremos como indicador para quantificar o porte físico de uma pessoa o IMC (Índice de Massa corporal), medida a qual leva em consideração o peso e a altura do individuo (IMC= Peso/(Altura)$^2$). Consideraremos no experimento faixas de IMC como fator ruído, (faixas segundo o site **"http://www.calculoimc.com.br/"**) a fim de tentar minimizar a influência da relação supracitada sobre o experimento.  
+  O experimento consiste em realizar o teste de reflexo disponível em $"http://www.brainmetrix.com/reflex-test/"$ antes de ingerir bebida e após decorrido 1h da ingestão. A variável resposta é a diferença entre os pontos obtidos antes e depois.O intervalo de 1 hora permite total absorção da bebida pelo o corpo.
   
-  Deve se ter em mente também que a alimentação, estilo de vida e genetica do indivíduo também podem representar influência nos resultados, porém dado as limitações financeiras, temporais e tecnológicas em que o experimento será realizado, nos atemos a somente tentar minimizar estes efeitos e não controla-los. Note que blocagem por indivíduo não é possível, dado que o sexo do indivíduo é um fator, então a medida adotada para minimizar estes efeitos será propor que os indivíduos participantes do experimento mantenham uma rotina similar (entre todos) nos dias, presente e anterior ao dia da realização do experimento. Dado o ambiente acadêmico em que estamos inseridos, definimos uma rotina a se seguida pelos participantes do experimento:
-  
-Alimentação: 
-  
-  Café da manhã: nos restaurantes Universitários por volta das 8:00 h.  
-  Almoço: nos restaurantes universitários por volta das 12:00 h.  
-  jantar: nos restaurantes universitários por volta das 18:30 h.  
-  
-Demais orientações:
-  
-  Não praticar exercícios físicos nestes dois dias.  
-  Dormir por volta de 8h no dia anterior ao experimento.
-  
-Em caso de impossibilidade de seguir as recomendações, os indivíduos deverão avisar os experimentadores para que uma observação quanto a isso seja feita no trabalho.
+  Pesquisas anteriores revelam indícios de relação entre a quantidade ingerida de álcool e o porte físico da pessoa. Porém não é de interesse do nosso experimento verificar tal relação, então é razoável considerar o porte fisíco do indivíduo como um fator ruído. Para quantificar este fator, vamos utilizar o Índice de Massa Corporal (IMC), medida essa que leva em consideração o peso e altura respeitando a seguinte razão:
+  $$IMC=\frac{Peso}{Altura^2}$$
+   
+  A fim de tentar minimizar a influência da relação supracitada sobre o experimento.  Consideraremos no experimento os seguintes intervalos de IMC como fator ruído:
 
-#Delineamento experimental
+```{r, echo=FALSE}
 
-UE´s:  
-Fatores:  
-Tratamentos:  
-Blocos:  
+IMC<-c("abaixo de 18.5","entre 18.5 e 24.9", "entre 25.0 e 29.9", "entre 30.0 e 34.9", "entre 35.0 e 39.9", "acima de 40")
+classificacao<-c("abaixo do peso", "Peso Ideal", "Levemente acima do peso", "Obesidade I", "Obesidade II (Severa)", "Obesidade III(Mórbida)")
 
+tab_imc=data.frame(IMC,classificacao)
+names(tab_imc)<-c("IMC", "Classificação")
 
-
-```{r}
+library(knitr)
+kable(tab_imc)
 
 ```
+
+   Devemos ter em mente que a alimentação, estilo de vida e genética do indivíduo também podem influênciar nos resultados, porém dado as limitações financeiras, temporais e tecnológicas em que o experimento será realizado, nos atemos somente a tentar minimizar estes efeitos e não controla-los.
+   Note que blocagem por indivíduo não é possível, dado que o sexo do indivíduo é um fator, então a medida adotada para minimizar estes efeitos será orientar os participantes do experimento a não ingerir nenhum tipo de bebida alcóolica nos dois dias antecedentes ao dia da realização do experimento e a dormir bem(por volta de 8 horas).Em caso de impossibilidade de seguir as recomendações, os indivíduos deverão avisar os experimentadores para que uma observação quanto a isso seja feita no trabalho.
+  
+  
+#Delineamento experimental
+Para realizar as análises, o delineamento que vamos utilizar é **Blocagem em Experimentos Fatoriais**., onde o experimento fatorial tem fois fatores, o fator A é o sexo do indivíduo e o fator B é tipo de ingestão. O fator A tem dois níveis, feminino e masculino, e o fator B tem 3 níveis, apenas ingerir alcool, ingerir alcool e beber água, ingerir e comer um petisco.
+
+```{r, echo=FALSE}
+a<-c("Unidade Experimental", "Fatores de Interesse", "Fator Ruído", "Tratamento")
+b<-c("Individuo","Sexo e Tipo de Ingestão", "IMC","Teste de Reflexo")
+delineamento<-data.frame(a,b)
+kable(delineamento)
+```
+
+Dado o delineamento de experimento escolhido. Usaremos o seguinte modelo:
+
+$$Y_{ijk}=\mu+\tau_i+\beta_j+(\tau\beta)_{ij}+\delta_k+\varepsilon_{ijk}\left\{\begin{matrix}
+i=1,2,3\\ 
+j=1,2\\ 
+k=1,2
+\end{matrix}\right.$$
+
+Nossas observações serão dispostas da seguinte forma:
+
+\begin{table}[!h]
+\centering
+\label{my-label}
+\begin{tabular}{cclllclllclll}
+\multicolumn{1}{l}{} & \multicolumn{12}{c}{OBSERVAÇÕES}                                                                                                                                                                                                                                                                                      \\
+                     & \multicolumn{4}{c}{IMC 1}                                                                             & \multicolumn{4}{c}{IMC2}                                                                              & \multicolumn{4}{c}{IMC3}                                                                              \\
+                     & \multicolumn{4}{c}{Sexo}                                                                              & \multicolumn{4}{c}{Sexo}                                                                              & \multicolumn{4}{c}{Sexo}                                                                              \\
+                     & \multicolumn{2}{c}{F}                                 & \multicolumn{2}{c}{M}                         & \multicolumn{2}{c}{F}                                 & \multicolumn{2}{c}{M}                         & \multicolumn{2}{c}{F}                                 & \multicolumn{2}{c}{M}                         \\
+Tipo de Ingestão     & A                             & \multicolumn{1}{c}{D} & \multicolumn{1}{c}{A} & \multicolumn{1}{c}{D} & A                             & \multicolumn{1}{c}{D} & \multicolumn{1}{c}{A} & \multicolumn{1}{c}{A} & A                             & \multicolumn{1}{c}{D} & \multicolumn{1}{c}{A} & \multicolumn{1}{c}{D} \\
+1                    & \multicolumn{1}{l}{$y_{111}$} & $y_{111}$             & $y_{121}$             & $y_{121}$             & \multicolumn{1}{l}{$y_{112}$} & $y_{112}$             & $y_{122}$             & $y_{122}$             & \multicolumn{1}{l}{$y_{113}$} & $y_{113}$             & $y_{123}$             & $y_{123}$             \\
+2                    & \multicolumn{1}{l}{$y_{211}$} & $y_{211}$             & $y_{221}$             & $y_{221}$             & \multicolumn{1}{l}{$y_{212}$} & $y_{212}$             & $y_{222}$             & $y_{222}$             & \multicolumn{1}{l}{$y_{213}$} & $y_{213}$             & $y_{223}$             & $y_{223}$             \\
+3                    & \multicolumn{1}{l}{$y_{311}$} & $y_{311}$             & $y_{321}$             & $y_{321}$             & \multicolumn{1}{l}{$y_{312}$} & $y_{312}$             & $y_{322}$             & $y_{322}$             & \multicolumn{1}{l}{$y_{313}$} & $y_{313}$             & $y_{323}$             & $y_{323}$            
+\end{tabular}
+\end{table}
 
