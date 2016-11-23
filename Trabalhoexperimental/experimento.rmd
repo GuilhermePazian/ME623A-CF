@@ -27,11 +27,11 @@ Veremos também se existe iteração entre eles.
 
 ```{r, echo=FALSE}
 
-IMC<-c("abaixo de 18.5","entre 18.5 e 24.9", "entre 25.0 e 29.9", "entre 30.0 e 34.9", "entre 35.0 e 39.9", "acima de 40")
-classificacao<-c("abaixo do peso", "Peso Ideal", "Levemente acima do peso", "Obesidade I", "Obesidade II (Severa)", "Obesidade III(Mórbida)")
+IMC<-c("abaixo de 21.9","entre 22 e 25.4", "acima de 25.5")
+classificacao<-c("IMC 1", "IMC 2", "IMC 3")
 
-tab_imc=data.frame(IMC,classificacao)
-names(tab_imc)<-c("IMC", "Classificação")
+tab_imc=data.frame(classificacao, IMC)
+names(tab_imc)<-c("Classificação","IMC")
 
 library(knitr)
 kable(tab_imc)
@@ -68,18 +68,17 @@ Nossas observações serão dispostas da seguinte forma:
 
 \begin{table}[!h]
 \centering
-\caption{Apresentação dos dados}
+\caption{Apresentação das observações  }
 \label{my-label}
-\begin{tabular}{c|c|l|l|l|c|l|l|l|c|l|l|l|}
-\cline{2-13}
-\multicolumn{1}{l|}{}                  & \multicolumn{12}{c|}{OBSERVAÇÕES}                                                                                                                                                                                                                                                                                                 \\ \cline{2-13} 
-                                       & \multicolumn{4}{c|}{IMC 1}                                                                                & \multicolumn{4}{c|}{IMC2}                                                                                 & \multicolumn{4}{c|}{IMC3}                                                                                 \\ \cline{2-13} 
-                                       & \multicolumn{4}{c|}{Sexo}                                                                                 & \multicolumn{4}{c|}{Sexo}                                                                                 & \multicolumn{4}{c|}{Sexo}                                                                                 \\ \hline
-\multicolumn{1}{|c|}{}                 & \multicolumn{2}{c|}{F}                                  & \multicolumn{2}{c|}{M}                          & \multicolumn{2}{c|}{F}                                  & \multicolumn{2}{c|}{M}                          & \multicolumn{2}{c|}{F}                                  & \multicolumn{2}{c|}{M}                          \\ \hline
-\multicolumn{1}{|c|}{Tipo de Ingestão} & A                              & \multicolumn{1}{c|}{D} & \multicolumn{1}{c|}{A} & \multicolumn{1}{c|}{D} & A                              & \multicolumn{1}{c|}{D} & \multicolumn{1}{c|}{A} & \multicolumn{1}{c|}{A} & A                              & \multicolumn{1}{c|}{D} & \multicolumn{1}{c|}{A} & \multicolumn{1}{c|}{D} \\ \hline
-\multicolumn{1}{|c|}{1}                & \multicolumn{1}{l|}{$y_{111}$} & $y_{111}$              & $y_{121}$              & $y_{121}$              & \multicolumn{1}{l|}{$y_{112}$} & $y_{112}$              & $y_{122}$              & $y_{122}$              & \multicolumn{1}{l|}{$y_{113}$} & $y_{113}$              & $y_{123}$              & $y_{123}$              \\ \hline
-\multicolumn{1}{|c|}{2}                & \multicolumn{1}{l|}{$y_{211}$} & $y_{211}$              & $y_{221}$              & $y_{221}$              & \multicolumn{1}{l|}{$y_{212}$} & $y_{212}$              & $y_{222}$              & $y_{222}$              & \multicolumn{1}{l|}{$y_{213}$} & $y_{213}$              & $y_{223}$              & $y_{223}$              \\ \hline
-\multicolumn{1}{|c|}{3}                & \multicolumn{1}{l|}{$y_{311}$} & $y_{311}$              & $y_{321}$              & $y_{321}$              & \multicolumn{1}{l|}{$y_{312}$} & $y_{312}$              & $y_{322}$              & $y_{322}$              & \multicolumn{1}{l|}{$y_{313}$} & $y_{313}$              & $y_{323}$              & $y_{323}$              \\ \hline
+\begin{tabular}{cclllclllclll}
+\multicolumn{1}{l}{} & \multicolumn{12}{c}{OBSERVAÇÕES}                                                                                                                                                                                                                                                                                      \\
+                     & \multicolumn{4}{c}{IMC 1}                                                                             & \multicolumn{4}{c}{IMC 2}                                                                              & \multicolumn{4}{c}{IMC 3}                                                                              \\
+                     & \multicolumn{4}{c}{Sexo}                                                                              & \multicolumn{4}{c}{Sexo}                                                                              & \multicolumn{4}{c}{Sexo}                                                                              \\
+                     & \multicolumn{2}{c}{F}                                 & \multicolumn{2}{c}{M}                         & \multicolumn{2}{c}{F}                                 & \multicolumn{2}{c}{M}                         & \multicolumn{2}{c}{F}                                 & \multicolumn{2}{c}{M}                         \\
+Tipo de Ingestão     & A                             & \multicolumn{1}{c}{D} & \multicolumn{1}{c}{A} & \multicolumn{1}{c}{D} & A                             & \multicolumn{1}{c}{D} & \multicolumn{1}{c}{A} & \multicolumn{1}{c}{A} & A                             & \multicolumn{1}{c}{D} & \multicolumn{1}{c}{A} & \multicolumn{1}{c}{D} \\
+1                    & \multicolumn{1}{l}{$y_{111}$} & $y_{111}$             & $y_{121}$             & $y_{121}$             & \multicolumn{1}{l}{$y_{112}$} & $y_{112}$             & $y_{122}$             & $y_{122}$             & \multicolumn{1}{l}{$y_{113}$} & $y_{113}$             & $y_{123}$             & $y_{123}$             \\
+2                    & \multicolumn{1}{l}{$y_{211}$} & $y_{211}$             & $y_{221}$             & $y_{221}$             & \multicolumn{1}{l}{$y_{212}$} & $y_{212}$             & $y_{222}$             & $y_{222}$             & \multicolumn{1}{l}{$y_{213}$} & $y_{213}$             & $y_{223}$             & $y_{223}$             \\
+3                    & \multicolumn{1}{l}{$y_{311}$} & $y_{311}$             & $y_{321}$             & $y_{321}$             & \multicolumn{1}{l}{$y_{312}$} & $y_{312}$             & $y_{322}$             & $y_{322}$             & \multicolumn{1}{l}{$y_{313}$} & $y_{313}$             & $y_{323}$             & $y_{323}$            
 \end{tabular}
 \end{table}
 
