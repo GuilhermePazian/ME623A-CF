@@ -1,22 +1,21 @@
 ---
 title: "Projeto Final ME623 - 1º Relatório"
-author: "Eliane Siqueira RA:155233
-Guilherme Pazian RA:160323"
+author: "Eliane Siqueira RA:155233 e Guilherme Pazian RA:160323"
 date: "22 de novembro de 2016"
 output: pdf_document
 ---
 
 #Motivação
   
-   Em algumas épocas festivas do ano, ocorre um grande aumento do consumo de alcool, o que levanta a discussões sobre os riscos decorrentes da ingestão de alcool. 
-    Um dos principais efeitos decorrentes do consumo de alcool é a perda de reflexos, o que favorece a ocorrência de diversos tipos de acidentes.Contudo uma questão bastante relevante é se essa perda é decorrente somente da quantidade ingerida de álcool ou se há outros fatores que influenciam significativamente.  
+   Em algumas épocas festivas do ano, ocorre um grande aumento do consumo de álcool, o que levanta discussões sobre os riscos decorrentes da ingestão do mesmo. 
+    Um dos principais efeitos decorrentes do consumo de álcool é a perda de reflexos, o que favorece a ocorrência de diversos tipos de acidentes. Contudo uma questão bastante relevante é se essa perda é decorrente somente da quantidade ingerida de álcool ou se há outros fatores que influenciam significativamente.  
     Muitas pessoas fazem a conjuntura de que fatores como sexo e consumo de comidas/bebidas que influênciam na hidratação corporal têm grande influência na potencialização, ou amenização, dos efeitos do álcool.  
-    A partir dessa conjuntura, nos surgiu o interesse de se saber se existe diferença dependendo do sexo da pessoa e se esta consome amendoin, bebe água ou não têm nenhum consumo na influência sobre um dos principais efeitos do álcool, o reflexo.
-    O nosso experimento propõe dois possíveis fatores: o sexo (masculino e feminino) e tipo de ingestão de alcool. 
+    A partir dessa conjuntura, nos surgiu o interesse de se saber se existe diferença dependendo do sexo da pessoa, assim como se esta consome um alimento salgado, se bebe água ou se não têm nenhum outro consumo concomitante à ingestão do álcool na influência sobre um de seus principais efeitos, a perda de reflexo.
+    O nosso experimento propõe dois possíveis fatores: o sexo (masculino e feminino) e tipo de ingestão concomitante com a ingestão de álcool (alimento salgado, água, nenhum consumo adicional). 
     
 #Objetivo
 
-O objetivo do nosso experimento é verificar se o sexo e o tipo de ingestão influenciam na perda de reflexo.
+O objetivo do nosso experimento é verificar se o sexo e os consumos periféricos influenciam na perda de reflexo.
 Veremos também se existe iteração entre eles.
 
 #Planejamento
@@ -26,7 +25,7 @@ Veremos também se existe iteração entre eles.
   Pesquisas anteriores revelam indícios de relação entre a quantidade ingerida de álcool e o porte físico da pessoa. Porém não é de interesse do nosso experimento verificar tal relação, então é razoável considerar o porte fisíco do indivíduo como um fator ruído. Para quantificar este fator, vamos utilizar o Índice de Massa Corporal (IMC), medida essa que leva em consideração o peso e altura respeitando a seguinte relação:
   $$IMC=\frac{Peso}{Altura^2}$$
   
-  A fim de tentar minimizar a influência da relação supracitada sobre o experimento,  consideraremos no experimento os seguintes intervalos de IMC como blocos:
+  A fim de tentar minimizar a influência da relação supracitada sobre o experimento,  consideraremos os seguintes intervalos de IMC como blocos:
 
 ```{r, echo=FALSE}
 
@@ -41,15 +40,15 @@ kable(tab_imc)
 
 ```
 
-  Portanto, cada indivíduo será submetido somente uma vez e em apenas um tratamento. A tipo de ingestão será aleatorizado dentro de cada bloco, respeitando o limite de três tipos de ingestão para cada sexo em cada bloco.  
-   Devemos ter em mente que a alimentação, estilo de vida e genética do indivíduo também podem influênciar nos resultados, porém dado as limitações financeiras e temporais em que o experimento será realizado, nos atemos somente a tentar minimizar estes efeitos e não controla-los. Note que blocagem por indivíduo não é possível, dado que o sexo do indivíduo é um fator, então a medida adotada para minimizar estes efeitos será orientar os participantes do experimento a não ingerir nenhum tipo de bebida alcóolica e dormir por volta de 8 horas nos dois dias antecedentes ao dia da realização do experimento, assim como, se alimentar bem no dia do experimento. Em caso de impossibilidade de seguir as recomendações, os indivíduos deverão avisar os experimentadores para que uma observação quanto a isso seja feita no trabalho.
+  Portanto, cada indivíduo será submetido apenas à um tratamento e somente uma vez. O consumo periférico de ingestão será aleatorizado dentro de cada bloco, respeitando o limite de três tipos de consumo periférico para cada sexo em cada bloco.  
+   Devemos ter em mente que a alimentação, estilo de vida e genética do indivíduo também podem influênciar nos resultados, porém dado as limitações financeiras e temporais em que o experimento será realizado, nos atemos somente a tentar minimizar estes efeitos e não controla-los. Note que blocagem por indivíduo não é possível, dado que o sexo do indivíduo é um fator, então a medida adotada para minimizar estes efeitos será orientar os participantes do experimento a não ingerir nenhum tipo de bebida alcóolica e dormir por volta de 8 horas nos dois dias antecedentes ao dia da realização do experimento, assim como, se alimentar bem no dia do experimento. Em caso de impossibilidade de seguir as recomendações, os indivíduos deverão nos avisar para que uma observação quanto a isso seja feita no trabalho.
   
   
 #Delineamento experimental
 Para realizar as análises, o delineamento que vamos utilizar é **Blocagem em Experimentos Fatoriais**. 
-Neste caso, o experimento fatorial tem dois fatores, o fator A é o sexo do indivíduo e o fator B é tipo de ingestão.
+Neste caso, o experimento fatorial tem dois fatores, o fator A é o sexo do indivíduo e o fator B é tipo consumo periférico.
 
-O fator A tem dois níveis, feminino e masculino, e o fator B tem 3 níveis, apenas ingerir alcool (X), ingerir alcool e beber água(Y), ingerir e comer um petisco(Z).
+O fator A tem dois níveis, feminino e masculino, e o fator B tem 3 níveis, apenas ingerir álcool (X), ingerir álcool e beber água(Y), ingerir álcool e comer um petisco(Z).
 
 O tratamento será a combinação dos níveis dos fatores A e B.
 
@@ -63,7 +62,8 @@ j=1,2\\
 k=1,2
 \end{matrix}\right.$$
 
-onde $\delta_k$ representa o efeitos do k-ésimo IMC.
+onde  $\tau_i$ é efeito do i-ésimo tipo de consumo periférico, $\beta_j$ é o efeito do j-ésimo sexo, $\delta_k$ representa o efeitos do k-ésimo IMC, $(\tau\beta)_{ij}$ é a interação entre o sexo e o tipo de consumo periférico e $\mu$ é a média global.   
+$\varepsilon_{ijk} \overset{i.i.d.}{\sim}$ N(0,$\sigma^2$).
 
 
 
@@ -78,7 +78,7 @@ Nossas observações serão dispostas da seguinte forma:
                      & \multicolumn{4}{c}{IMC 1}                                                                             & \multicolumn{4}{c}{IMC 2}                                                                              & \multicolumn{4}{c}{IMC 3}                                                                              \\
                      & \multicolumn{4}{c}{Sexo}                                                                              & \multicolumn{4}{c}{Sexo}                                                                              & \multicolumn{4}{c}{Sexo}                                                                              \\
                      & \multicolumn{2}{c}{F}                                 & \multicolumn{2}{c}{M}                         & \multicolumn{2}{c}{F}                                 & \multicolumn{2}{c}{M}                         & \multicolumn{2}{c}{F}                                 & \multicolumn{2}{c}{M}                         \\
-Tipo de Ingestão     & A                             & \multicolumn{1}{c}{D} & \multicolumn{1}{c}{A} & \multicolumn{1}{c}{D} & A                             & \multicolumn{1}{c}{D} & \multicolumn{1}{c}{A} & \multicolumn{1}{c}{A} & A                             & \multicolumn{1}{c}{D} & \multicolumn{1}{c}{A} & \multicolumn{1}{c}{D} \\
+Tipo de consumo periférico     & A                             & \multicolumn{1}{c}{D} & \multicolumn{1}{c}{A} & \multicolumn{1}{c}{D} & A                             & \multicolumn{1}{c}{D} & \multicolumn{1}{c}{A} & \multicolumn{1}{c}{A} & A                             & \multicolumn{1}{c}{D} & \multicolumn{1}{c}{A} & \multicolumn{1}{c}{D} \\
 X                    & \multicolumn{1}{l}{$y_{111}$} & $y_{111}$             & $y_{121}$             & $y_{121}$             & \multicolumn{1}{l}{$y_{112}$} & $y_{112}$             & $y_{122}$             & $y_{122}$             & \multicolumn{1}{l}{$y_{113}$} & $y_{113}$             & $y_{123}$             & $y_{123}$             \\
   Y                  & \multicolumn{1}{l}{$y_{211}$} & $y_{211}$             & $y_{221}$             & $y_{221}$             & \multicolumn{1}{l}{$y_{212}$} & $y_{212}$             & $y_{222}$             & $y_{222}$             & \multicolumn{1}{l}{$y_{213}$} & $y_{213}$             & $y_{223}$             & $y_{223}$             \\
 Z                    & \multicolumn{1}{l}{$y_{311}$} & $y_{311}$             & $y_{321}$             & $y_{321}$             & \multicolumn{1}{l}{$y_{312}$} & $y_{312}$             & $y_{322}$             & $y_{322}$             & \multicolumn{1}{l}{$y_{313}$} & $y_{313}$             & $y_{323}$             & $y_{323}$            
@@ -87,10 +87,6 @@ Z                    & \multicolumn{1}{l}{$y_{311}$} & $y_{311}$             & $
 
 **Legenda:**
 
-*F: Feminino*  
-*M: Masculino*  
-*A: Antes*   
-*D: Depois*  
-*X: Apenas ingestão de álcool*  
-*Y: Ingestão de álcool e água*  
-*Z: Ingestão de álcool e petiscos*  
+*F: Feminino*  *M: Masculino*   
+*A: Antes*   *D: Depois*  
+*X: Apenas ingestão de álcool*   *Y: Ingestão de álcool e água*   *Z: Ingestão de álcool e petiscos*  
