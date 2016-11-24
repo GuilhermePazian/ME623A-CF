@@ -8,8 +8,8 @@ output: pdf_document
 #Motivação
   
    Em algumas épocas festivas do ano, ocorre um grande aumento do consumo de álcool, o que levanta discussões sobre os riscos decorrentes da ingestão do mesmo. 
-    Um dos principais efeitos decorrentes do consumo de álcool é a perda de reflexos, o que favorece a ocorrência de diversos tipos de acidentes. Contudo uma questão bastante relevante é se essa perda é decorrente somente da quantidade ingerida de álcool ou se há outros fatores que influenciam significativamente.  
-    Muitas pessoas fazem a conjectura de que fatores como sexo e consumo de comidas/bebidas que influênciam na hidratação corporal têm grande influência na potencialização, ou amenização, dos efeitos do álcool.  
+    Um dos principais efeitos decorrentes do consumo álcoolico é a perda de reflexos, o que favorece a ocorrência de diversos tipos de acidentes. Contudo uma questão bastante relevante é se essa perda é decorrente somente da quantidade ingerida de álcool ou se há outros fatores que influenciam significativamente.  
+    Muitas pessoas fazem a conjectura de que fatores como sexo e consumo de comidas/bebidas que influenciam na hidratação corporal têm grande influência na potencialização, ou amenização, dos efeitos do álcool.  
     A partir dessa conjectura, nos surgiu o interesse de se saber se existe diferença dependendo do sexo da pessoa, assim como se esta consome um alimento salgado, se bebe água ou se não têm nenhum outro consumo concomitante à ingestão do álcool na influência sobre um de seus principais efeitos, a perda de reflexo.
     O nosso experimento propõe dois possíveis fatores: o sexo (masculino e feminino) e tipo de ingestão concomitante com a ingestão de álcool (alimento salgado, água, nenhum consumo adicional). 
     
@@ -40,19 +40,19 @@ kable(tab_imc)
 
 ```
 
-  Portanto, cada indivíduo será submetido apenas à um tratamento e somente uma vez. O consumo periférico de ingestão será aleatorizado dentro de cada bloco, respeitando o limite de três tipos de consumo periférico para cada sexo em cada bloco.  
-   Devemos ter em mente que a alimentação, estilo de vida e genética do indivíduo também podem influênciar nos resultados, porém dado as limitações financeiras e temporais em que o experimento será realizado, nos atemos somente a tentar minimizar estes efeitos e não controla-los. Note que blocagem por indivíduo não é possível, dado que o sexo do indivíduo é um fator, então a medida adotada para minimizar estes efeitos será orientar os participantes do experimento a não ingerir nenhum tipo de bebida alcóolica e dormir por volta de 8 horas nos dois dias antecedentes ao dia da realização do experimento, assim como, se alimentar bem no dia do experimento. Em caso de impossibilidade de seguir as recomendações, os indivíduos deverão nos avisar para que uma observação quanto a isso seja feita no trabalho.
+  Portanto, cada indivíduo será submetido apenas à um tratamento e somente uma vez. O consumo periférico será aleatorizado dentro de cada bloco, respeitando o limite de três tipos de consumo periférico para cada sexo em cada bloco.  
+   Devemos ter em mente que a alimentação, estilo de vida e genética do indivíduo também podem influenciar nos resultados, porém dado as limitações financeiras e temporais em que o experimento será realizado, nos atemos somente a tentar minimizar estes efeitos e não controlá-los. Note que blocagem por indivíduo não é possível, dado que o sexo do indivíduo é um fator, então a medida adotada para minimizar estes efeitos será orientar os participantes do experimento a não ingerir nenhum tipo de bebida alcóolica e dormir por volta de 8 horas nos dois dias antecedentes ao dia da realização do experimento, assim como, se alimentar bem no dia do experimento. Em caso de impossibilidade de seguir as recomendações, os indivíduos deverão nos avisar para que uma observação quanto a isso seja feita no trabalho.
   
   
 #Delineamento experimental
 Para realizar as análises, o delineamento que vamos utilizar é **Blocagem em Experimentos Fatoriais**. 
-Neste caso, o experimento fatorial tem dois fatores, o fator A é o sexo do indivíduo e o fator B é tipo consumo periférico.
+Neste caso, o experimento fatorial tem dois fatores, o fator A é o sexo do indivíduo e o fator B é o tipo consumo periférico.
 
-O fator A tem dois níveis, feminino e masculino, e o fator B tem 3 níveis, apenas ingerir álcool (X), ingerir álcool e beber água(Y), ingerir álcool e comer um petisco(Z).
+O fator A têm dois níveis, feminino e masculino, e o fator B tem 3 níveis, apenas ingerir álcool (X), ingerir álcool e água (Y), ingerir álcool e comer um petisco salgado (Z).
 
 O tratamento será a combinação dos níveis dos fatores A e B.
 
-OS blocos serão os 3 níveis de IMC.
+Os blocos serão os 3 níveis de IMC.
 
 Dado o delineamento de experimento escolhido, usaremos o seguinte modelo:
 
