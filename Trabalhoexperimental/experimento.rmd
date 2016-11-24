@@ -8,7 +8,9 @@ output: pdf_document
 #Motivação
   
    Em algumas épocas festivas do ano, ocorre um grande aumento do consumo de alcool, o que levanta a discussões sobre os riscos decorrentes da ingestão de alcool. 
-    Um dos principais efeitos decorrentes do consumo de alcool é a perda de reflexos, o que favorece a ocorrência de diversos tipos de acidentes.Contudo uma questão bastante relevante é se essa perda é decorrente somente da quantidade ingerida de álcool ou se há outros fatores que influenciam significativamente. 
+    Um dos principais efeitos decorrentes do consumo de alcool é a perda de reflexos, o que favorece a ocorrência de diversos tipos de acidentes.Contudo uma questão bastante relevante é se essa perda é decorrente somente da quantidade ingerida de álcool ou se há outros fatores que influenciam significativamente.  
+    Muitas pessoas fazem a conjuntura de que fatores como sexo e consumo de comidas/bebidas que influênciam na hidratação corporal têm grande influência na potencialização, ou amenização, dos efeitos do álcool.  
+    A partir dessa conjuntura, nos surgiu o interesse de se saber se existe diferença dependendo do sexo da pessoa e se esta consome amendoin, bebe água ou não têm nenhum consumo na influência sobre um dos principais efeitos do álcool, o reflexo.
     O nosso experimento propõe dois possíveis fatores: o sexo (masculino e feminino) e tipo de ingestão de alcool. 
     
 #Objetivo
@@ -18,7 +20,7 @@ Veremos também se existe iteração entre eles.
 
 #Planejamento
   O experimento consiste em aferir o efeito dos tratamentos na variável resposta.
-  A variável resposta, capacidade de reação (reflexo), será mensurada por um teste de reflexo disponível em **"http://www.brainmetrix.com/reflex-test/"**. A medida será obtida a partir da diferença de pontos obtidos antes e após 1h à ingestão do álcool. O intervalo de 1 hora permite total absorção da bebida pelo o corpo.
+  A variável resposta, capacidade de reação (reflexo), será mensurada por um teste de reflexo disponível em **"http://www.brainmetrix.com/reflex-test/" **. A medida será obtida a partir da diferença de pontos obtidos antes e após 1h à ingestão do álcool. O intervalo de 1 hora permite total absorção da bebida pelo o corpo.
   
   Pesquisas anteriores revelam indícios de relação entre a quantidade ingerida de álcool e o porte físico da pessoa. Porém não é de interesse do nosso experimento verificar tal relação, então é razoável considerar o porte fisíco do indivíduo como um fator ruído. Para quantificar este fator, vamos utilizar o Índice de Massa Corporal (IMC), medida essa que leva em consideração o peso e altura respeitando a seguinte relação:
   $$IMC=\frac{Peso}{Altura^2}$$
