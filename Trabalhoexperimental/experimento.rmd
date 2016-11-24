@@ -1,6 +1,7 @@
 ---
-title: "Experimento Alcoolico"
-author: "Eliane Siqueira RA:155233 e Guilherme Pazian RA:160323"
+title: "Projeto Final ME623 - 1º Relatório"
+author: "Eliane Siqueira RA:155233
+Guilherme Pazian RA:160323"
 date: "22 de novembro de 2016"
 output: pdf_document
 ---
@@ -29,7 +30,7 @@ Veremos também se existe iteração entre eles.
 
 ```{r, echo=FALSE}
 
-IMC<-c("abaixo de 21.9","entre 22 e 25.4", "acima de 25.5")
+IMC<-c("abaixo de 21","entre 21 e 23.5", "acima de 23.5")
 classificacao<-c("IMC 1", "IMC 2", "IMC 3")
 
 tab_imc=data.frame(classificacao, IMC)
@@ -48,7 +49,7 @@ kable(tab_imc)
 Para realizar as análises, o delineamento que vamos utilizar é **Blocagem em Experimentos Fatoriais**. 
 Neste caso, o experimento fatorial tem dois fatores, o fator A é o sexo do indivíduo e o fator B é tipo de ingestão.
 
-O fator A tem dois níveis, feminino e masculino, e o fator B tem 3 níveis, apenas ingerir alcool (1), ingerir alcool e beber água(2), ingerir e comer um petisco(3).
+O fator A tem dois níveis, feminino e masculino, e o fator B tem 3 níveis, apenas ingerir alcool (X), ingerir alcool e beber água(Y), ingerir e comer um petisco(Z).
 
 O tratamento será a combinação dos níveis dos fatores A e B.
 
@@ -78,9 +79,9 @@ Nossas observações serão dispostas da seguinte forma:
                      & \multicolumn{4}{c}{Sexo}                                                                              & \multicolumn{4}{c}{Sexo}                                                                              & \multicolumn{4}{c}{Sexo}                                                                              \\
                      & \multicolumn{2}{c}{F}                                 & \multicolumn{2}{c}{M}                         & \multicolumn{2}{c}{F}                                 & \multicolumn{2}{c}{M}                         & \multicolumn{2}{c}{F}                                 & \multicolumn{2}{c}{M}                         \\
 Tipo de Ingestão     & A                             & \multicolumn{1}{c}{D} & \multicolumn{1}{c}{A} & \multicolumn{1}{c}{D} & A                             & \multicolumn{1}{c}{D} & \multicolumn{1}{c}{A} & \multicolumn{1}{c}{A} & A                             & \multicolumn{1}{c}{D} & \multicolumn{1}{c}{A} & \multicolumn{1}{c}{D} \\
-1                    & \multicolumn{1}{l}{$y_{111}$} & $y_{111}$             & $y_{121}$             & $y_{121}$             & \multicolumn{1}{l}{$y_{112}$} & $y_{112}$             & $y_{122}$             & $y_{122}$             & \multicolumn{1}{l}{$y_{113}$} & $y_{113}$             & $y_{123}$             & $y_{123}$             \\
-2                    & \multicolumn{1}{l}{$y_{211}$} & $y_{211}$             & $y_{221}$             & $y_{221}$             & \multicolumn{1}{l}{$y_{212}$} & $y_{212}$             & $y_{222}$             & $y_{222}$             & \multicolumn{1}{l}{$y_{213}$} & $y_{213}$             & $y_{223}$             & $y_{223}$             \\
-3                    & \multicolumn{1}{l}{$y_{311}$} & $y_{311}$             & $y_{321}$             & $y_{321}$             & \multicolumn{1}{l}{$y_{312}$} & $y_{312}$             & $y_{322}$             & $y_{322}$             & \multicolumn{1}{l}{$y_{313}$} & $y_{313}$             & $y_{323}$             & $y_{323}$            
+X                    & \multicolumn{1}{l}{$y_{111}$} & $y_{111}$             & $y_{121}$             & $y_{121}$             & \multicolumn{1}{l}{$y_{112}$} & $y_{112}$             & $y_{122}$             & $y_{122}$             & \multicolumn{1}{l}{$y_{113}$} & $y_{113}$             & $y_{123}$             & $y_{123}$             \\
+  Y                  & \multicolumn{1}{l}{$y_{211}$} & $y_{211}$             & $y_{221}$             & $y_{221}$             & \multicolumn{1}{l}{$y_{212}$} & $y_{212}$             & $y_{222}$             & $y_{222}$             & \multicolumn{1}{l}{$y_{213}$} & $y_{213}$             & $y_{223}$             & $y_{223}$             \\
+Z                    & \multicolumn{1}{l}{$y_{311}$} & $y_{311}$             & $y_{321}$             & $y_{321}$             & \multicolumn{1}{l}{$y_{312}$} & $y_{312}$             & $y_{322}$             & $y_{322}$             & \multicolumn{1}{l}{$y_{313}$} & $y_{313}$             & $y_{323}$             & $y_{323}$            
 \end{tabular}
 \end{table}
 
@@ -90,6 +91,6 @@ Tipo de Ingestão     & A                             & \multicolumn{1}{c}{D} & 
 *M: Masculino*  
 *A: Antes*   
 *D: Depois*  
-*1: Apenas ingestão de álcool*  
-*2: Ingestão de álcool e água*  
-*3: Ingestão de álcool e petiscos*  
+*X: Apenas ingestão de álcool*  
+*Y: Ingestão de álcool e água*  
+*Z: Ingestão de álcool e petiscos*  
