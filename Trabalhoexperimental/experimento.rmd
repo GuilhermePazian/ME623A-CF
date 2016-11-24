@@ -9,8 +9,8 @@ output: pdf_document
   
    Em algumas épocas festivas do ano, ocorre um grande aumento do consumo de álcool, o que levanta discussões sobre os riscos decorrentes da ingestão do mesmo. 
     Um dos principais efeitos decorrentes do consumo de álcool é a perda de reflexos, o que favorece a ocorrência de diversos tipos de acidentes. Contudo uma questão bastante relevante é se essa perda é decorrente somente da quantidade ingerida de álcool ou se há outros fatores que influenciam significativamente.  
-    Muitas pessoas fazem a conjuntura de que fatores como sexo e consumo de comidas/bebidas que influênciam na hidratação corporal têm grande influência na potencialização, ou amenização, dos efeitos do álcool.  
-    A partir dessa conjuntura, nos surgiu o interesse de se saber se existe diferença dependendo do sexo da pessoa, assim como se esta consome um alimento salgado, se bebe água ou se não têm nenhum outro consumo concomitante à ingestão do álcool na influência sobre um de seus principais efeitos, a perda de reflexo.
+    Muitas pessoas fazem a conjectura de que fatores como sexo e consumo de comidas/bebidas que influênciam na hidratação corporal têm grande influência na potencialização, ou amenização, dos efeitos do álcool.  
+    A partir dessa conjectura, nos surgiu o interesse de se saber se existe diferença dependendo do sexo da pessoa, assim como se esta consome um alimento salgado, se bebe água ou se não têm nenhum outro consumo concomitante à ingestão do álcool na influência sobre um de seus principais efeitos, a perda de reflexo.
     O nosso experimento propõe dois possíveis fatores: o sexo (masculino e feminino) e tipo de ingestão concomitante com a ingestão de álcool (alimento salgado, água, nenhum consumo adicional). 
     
 #Objetivo
