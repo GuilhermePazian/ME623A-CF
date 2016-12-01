@@ -5,3 +5,41 @@ date: "1 de dezembro de 2016"
 output: pdf_document
 ---
 
+#Motivação
+
+  Atualmente muito se discute sobre eficiência no âmbito estudantil, dois dos quesitos mais importantes nesta área são a rapidez de raciocínio e o alto nível de concentração. Nós, alunos,  buscamos sempre a melhor maneira para se aproveitar o tempo de estudo com eficiência, porém muitos fatores parecem ter influência quanto à isso. Um dos fatores que mais são apontados pelos alunos como grande influência no rendimento nos estudos é o período do dia (manhã, tarde e noite), e por isso, este será o fator de interesse deste experimento.
+  Dado o ambiente quantitativo em que nós estamos inseridos (Curso de Estatística), decidimos que é razoável quantificar  a rapidez de raciocínio e o alto nível de concentração como o tempo de resolução de um Sudoku, uma vez que, resolver o Sudoku requer paciência, atenção e um pouco de lógica matemática para ajudar durante o processo de encaixar os números nos seus devidos lugares.
+
+#Objetivo
+
+  O objetivo do nosso experimento é verificar se o período do dia tem influência na rapidez de raciocínio.
+
+
+#Planejamento
+
+  Queremos comparar o desempenho em três períodos do dia, manhã, tarde e noite, onde: o período da manhã corresponde ao período anterior às 10hs, o período da tarde após às 13hs e antes das 17hs e o período da noite após às 19hs.
+  A variável resposta, tempo de resolução de um sudoku, será medida por um cronômetro. 
+  Para quantificar a rapidez de raciocínio, vamos fazer a contagem do tempo de resolução do Sudoku.
+  O Sudoku é um quebra cabeça baseado na colocação lógica de números de 1 a 9, o mesmo é formado por 9 linhas na horizontal, 9 colunas na vertical  e 9 quadrados menores, subdivididos pelo quadrado maior. O jogo consiste em encontrar o lugar certo para inserirmos um número de modo que ele não se repita na mesma linha, na mesma coluna ou no mesmo subquadrado.
+  
+  imagem do sudoku
+  
+  Sabemos que a capacidade e rapidez de raciocínio varia de pessoa para pessoa e que o dia da semana influencia no desempenho,  porém não estamos interessados em medir tal variação. Então é razoável considerar os dias e as pessoas como fatores ruídos.
+A fim de tentar minimizar a influência da relação supracitada sobre o experimento, consideraremos o dia e a pessoa como blocos.
+
+#Delineamento Experimental
+
+Para realizar as análises, o delineamento que vamos utilizar é Quadrado latino. Devido a sei lá o que, iremos replicar 3 vezes, utilizando as mesmas pessoas e os mesmos dias em  cada uma das replicações. (COLOCAR IMAGEM DE 3 QUADRADOS LATINOS, UM DO LADO DO OUTRO)
+
+```{r}
+dia1<-c("Manhã","Noite","Tarde")
+dia2<-c("Noite","Tarde","Manhã")
+dia3<-c("Tarde","Manhã", "Tarde")
+quadrado=rbind(dia1,dia2,dia3)
+colnames(quadrado)<-c("Pessoa 1", "Pessoa 2", "Pessoa 3")
+row.names(quadrado)<-c("Dia 1","Dia 2", "Dia 3")
+qlatino=data.frame(quadrado)
+
+```
+
+
