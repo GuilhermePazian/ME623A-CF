@@ -7,39 +7,47 @@ output: pdf_document
 
 #Motivação
 
-  Atualmente muito se discute sobre eficiência no âmbito estudantil, dois dos quesitos mais importantes nesta área são a rapidez de raciocínio e o alto nível de concentração. Nós, alunos,  buscamos sempre a melhor maneira para se aproveitar o tempo de estudo com eficiência, porém muitos fatores parecem ter influência quanto à isso. Um dos fatores que mais são apontados pelos alunos como grande influência no rendimento nos estudos é o período do dia (manhã, tarde e noite), e por isso, este será o fator de interesse deste experimento.
-  Dado o ambiente quantitativo em que nós estamos inseridos (Curso de Estatística), decidimos que é razoável quantificar  a rapidez de raciocínio e o alto nível de concentração como o tempo de resolução de um Sudoku, uma vez que, resolver o Sudoku requer paciência, atenção e um pouco de lógica matemática para ajudar durante o processo de encaixar os números nos seus devidos lugares.
+  Atualmente muito se discute sobre eficiência no âmbito estudantil, nós, alunos,  buscamos sempre a melhor maneira para se aproveitar o tempo de estudo a fim de se obter um maior rendimento no processo de aprendizagem, porém, muitas vezes temos dificuldades em manter a concentração mesmo com esforço, motivação e disciplina. A partir disto, muitos preocupam-se em entender e/ou controlar outros fatores além daqueles intrínsecos à cada aluno. Entre estes fatores, os mais comumente apontados são relacionados ao horário e ambiente de estudo, porém estes acabam sendo tomados por uma forma muito subjetiva, uma vez que não conseguimos definir claramente quais são os fatores que têm influência significativa no processo de aprendizagem.
+Duas das habilidades mais importantes para se obter um bom rendimento no processo de aprendizado são “rapidez de raciocínio” e o “alto nível de concentração”. Um dos fatores que mais são apontados pelos alunos como grande influência no rendimento nos estudos é o período do dia (manhã, tarde e noite), e por isso, este será o fator de interesse deste experimento. Temos interesse também em obter resultados para o nosso perfil estudantil.
+Entendemos que a área de estudo, estilo de vida e idade dos estudantes pode apresentar alguma influência nos resultados do experimento, por isso, dado nosso interesse, decidimos restringir este experimento ao ambiente em que estamos inseridos, ou seja, decidimos obter resultados somente para o perfil estudantil: “Estudantes de estatística da UNICAMP que tenham entre  20 e 26 anos” . Entendemos que tal perfil é bem razoável, pois contempla a grande maioria dos alunos do nosso curso e estes, quanto ao experimento, são semelhantes entre si, uma vez que a área de estudo é a mesma entre eles, o estilo de vida é similar e a faixa de idade definida não deve permitir que ocorram grandes diferenças de resultados entre os indivíduos devido à idade dos mesmos.
+Dado o ambiente quantitativo em que nós estamos inseridos (Curso de Estatística), decidimos que é razoável quantificar  a rapidez de raciocínio e o nível de concentração medindo o tempo de resolução de um Sudoku, uma vez que, resolver o Sudoku requer paciência, atenção e um pouco de lógica matemática para ajudar durante o processo de encaixar os números nos seus devidos lugares.
+Por hora, não é de nosso interesse fazer inferência à alguma população (por isso não utilizaremos técnicas de amostragem), mas sim compreender a influência dos períodos do dia no rendimento no processo de aprendizagem de alunos com perfil semelhante ao nosso.
+
 
 #Objetivo
 
-  O objetivo do nosso experimento é verificar se o período do dia tem influência na rapidez de raciocínio.
-
+O objetivo do nosso experimento é verificar se existe influência significativa do período do dia (manhã, tarde, noite) na rapidez de raciocínio e no nível de concentração em alunos com perfil semelhante ao nosso (estudantes de estatística da UNICAMP que tenham entre  20 e 26 anos).
 
 #Planejamento
 
-  Queremos comparar o desempenho em três períodos do dia, manhã, tarde e noite, onde: o período da manhã corresponde ao período anterior às 10hs, o período da tarde após às 13hs e antes das 17hs e o período da noite após às 19hs.
-  A variável resposta, tempo de resolução de um sudoku, será medida por um cronômetro. 
-  Para quantificar a rapidez de raciocínio, vamos fazer a contagem do tempo de resolução do Sudoku.
-  O Sudoku é um quebra cabeça baseado na colocação lógica de números de 1 a 9, o mesmo é formado por 9 linhas na horizontal, 9 colunas na vertical  e 9 quadrados menores, subdivididos pelo quadrado maior. O jogo consiste em encontrar o lugar certo para inserirmos um número de modo que ele não se repita na mesma linha, na mesma coluna ou no mesmo subquadrado.
-  
-  imagem do sudoku
-  
-  Sabemos que a capacidade e rapidez de raciocínio varia de pessoa para pessoa e que o dia da semana influencia no desempenho,  porém não estamos interessados em medir tal variação. Então é razoável considerar os dias e as pessoas como fatores ruídos.
-A fim de tentar minimizar a influência da relação supracitada sobre o experimento, consideraremos o dia e a pessoa como blocos.
+  Queremos comparar o desempenho em três períodos do dia, manhã, tarde e noite, onde:
+o período da manhã corresponde ao período anterior ao meio dia,o período da tarde à após às 13:00hs e antes das 17:30hs e o período da noite após às 19:00hs.
+A variável resposta, tempo de resolução de um sudoku, será medida por um cronômetro. 
+O Sudoku é um quebra cabeça baseado na colocação lógica de números de 1 a 9, o mesmo é formado por 9 linhas na horizontal, 9 colunas na vertical  e 9 quadrados menores, subdivididos pelo quadrado maior. O jogo consiste em encontrar o lugar certo para inserirmos um número de modo que ele não se repita na mesma linha, na mesma coluna ou no mesmo subquadrado.
+
+```{r}
+#imagem do sudoku
+```
+
+Sabemos que a capacidade e rapidez de raciocínio varia de pessoa para pessoa e que o dia da semana pode influenciar no desempenho,  porém não estamos interessados em medir tal variação, o que nos indica que é razoável considerar os dias e as pessoas como fatores ruídos.
+A fim de tentar minimizar a influência da relação supracitada sobre o experimento, vamos considerar os dias e as pessoas como blocos. 
+Portanto, cada indivíduo será submetido à todos os tratamentos somente uma vez cada um.
 
 #Delineamento Experimental
 
-Para realizar as análises, o delineamento que vamos utilizar é Quadrado latino. Devido a sei lá o que, iremos replicar 3 vezes, utilizando as mesmas pessoas e os mesmos dias em  cada uma das replicações. (COLOCAR IMAGEM DE 3 QUADRADOS LATINOS, UM DO LADO DO OUTRO)
-
+  Para realizar as análises, o delineamento que vamos utilizar é o **Quadrado latino**, onde os fatores ruídos serão: "Dia da Semana" e "Pessoa". Vamos considerar três dias da semana, segunda, quarta e sexta e três pessoas diferentes(Pessoa A,Pessoa B e Pessoa C). 
+  Devido à pequena dimensão do quadrado latino (3x3) teremos poucos graus de liberdade para o erro, o que pode acarretar equívocos na interpretação dos resultados. A Fim de resolver esta situação, iremos realizar 3 replicações nos quadrados latinos, mantendo os mesmos dias da semana em todas as replicações e variando as pessoas. Ou seja, utilizaremos então o delineamento **Quadrados latinos com Replicação**.
+  Onde o fator ruído "Dia da semana" manteremos os mesmos e fator ruído pessoa agora terá nove níveis (A,B,C,D,E,F,G, H,I) como se está representado abaixo: (COLOCAR IMAGEM DE 3 QUADRADOS LATINOS, UM DO LADO DO OUTRO)
+  
 ```{r}
-dia1<-c("Manhã","Noite","Tarde")
-dia2<-c("Noite","Tarde","Manhã")
-dia3<-c("Tarde","Manhã", "Tarde")
-quadrado=rbind(dia1,dia2,dia3)
-colnames(quadrado)<-c("Pessoa 1", "Pessoa 2", "Pessoa 3")
-row.names(quadrado)<-c("Dia 1","Dia 2", "Dia 3")
-qlatino=data.frame(quadrado)
 
 ```
 
+Dado o delineamento de experimento escolhido, usaremos o seguinte modelo:
+
+$$Y_{ijk}=\mu+\tau_i+\beta_j+\delta_k+\varepsilon_{ijk}\left\{\begin{matrix}
+i=1,2,3\\ 
+j=1,2,3\\ 
+k=1,2
+\end{matrix}\right.$$
 
