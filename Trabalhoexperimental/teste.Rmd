@@ -1,0 +1,29 @@
+---
+title: "teste"
+author: "Eliane Siqueira RA:155233 e Guilherme Pazian RA:160323"
+date: "3 de dezembro de 2016"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{|
+>{\columncolor[HTML]{EFEFEF}}l |lll|l|
+>{\columncolor[HTML]{EFEFEF}}l |lll|l|
+>{\columncolor[HTML]{EFEFEF}}l |lll|}
+\cline{1-4} \cline{6-9} \cline{11-14}
+\cellcolor[HTML]{C0C0C0}                                                                          & \multicolumn{3}{l|}{\cellcolor[HTML]{C0C0C0}Pessoa}                                  &  & \cellcolor[HTML]{C0C0C0}                                                                          & \multicolumn{3}{l|}{\cellcolor[HTML]{C0C0C0}Pessoa}                                  &  & \cellcolor[HTML]{C0C0C0}                                                                          & \multicolumn{3}{l|}{\cellcolor[HTML]{C0C0C0}Pessoa}                                  \\ \cline{2-4} \cline{7-9} \cline{12-14} 
+\multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}l@{}}Dia da\\ Semana\end{tabular}} & \cellcolor[HTML]{EFEFEF}P1 & \cellcolor[HTML]{EFEFEF}P2 & \cellcolor[HTML]{EFEFEF}P3 &  & \multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}l@{}}Dia da\\ Semana\end{tabular}} & \cellcolor[HTML]{EFEFEF}P4 & \cellcolor[HTML]{EFEFEF}P5 & \cellcolor[HTML]{EFEFEF}P6 &  & \multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}l@{}}Dia da\\ Semana\end{tabular}} & \cellcolor[HTML]{EFEFEF}P7 & \cellcolor[HTML]{EFEFEF}P8 & \cellcolor[HTML]{EFEFEF}P9 \\ \cline{1-4} \cline{6-9} \cline{11-14} 
+Seg                                                                                               & T                          & N                          & M                          &  & Seg                                                                                               & T                          & M                          & N                          &  & Seg                                                                                               & N                          & T                          & M                          \\
+Qua                                                                                               & N                          & M                          & T                          &  & Qua                                                                                               & N                          & T                          & M                          &  & Qua                                                                                               & M                          & N                          & T                          \\
+Sex                                                                                               & M                          & T                          & N                          &  & Sex                                                                                               & M                          & N                          & T                          &  & Sex                                                                                               & T                          & M                          & N                          \\ \cline{1-4} \cline{6-9} \cline{12-14} 
+\end{tabular}
+\end{table}

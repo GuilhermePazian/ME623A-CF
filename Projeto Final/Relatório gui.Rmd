@@ -35,7 +35,7 @@ Portanto, cada indivíduo será submetido à todos os tratamentos somente uma ve
 
   Para realizar as análises, o delineamento que vamos utilizar é o **Quadrado latino**, onde os fatores ruídos serão: "Dia da Semana" e "Pessoa". Vamos considerar três dias da semana, segunda, quarta e sexta e três pessoas diferentes(Pessoa A,Pessoa B e Pessoa C). 
   Devido à pequena dimensão do quadrado latino (3x3) teremos poucos graus de liberdade para o erro, o que pode acarretar equívocos na interpretação dos resultados. A Fim de resolver esta situação, iremos realizar 3 replicações nos quadrados latinos, mantendo os mesmos dias da semana em todas as replicações e variando as pessoas. Ou seja, utilizaremos então o delineamento **Quadrados latinos com Replicação**.
-    Onde o fator ruído "Dia da semana" manteremos os mesmos e fator ruído pessoa agora terá nove níveis (A,B,C,D,E,F,G, H,I) como se está representado abaixo: 
+  Onde o fator ruído "Dia da semana" manteremos os mesmos e fator ruído pessoa agora terá nove níveis (A,B,C,D,E,F,G, H,I) como se está representado abaixo: 
   
 ```{r echo= FALSE}
 #código para aleatorização dos quadrados latinos
@@ -85,6 +85,8 @@ i=1,2,3\\
 j=1,2,3\\ 
 k=1,2,3
 \end{matrix}\right.$$
+
+
 
 
 onde  $\alpha_i$ é efeito do i-ésimo dia, $\tau_j$ é o efeito do j-ésimo perído do dia, $\beta_k$ representa o efeitos da k-ésima pessoa e $\mu$ é a média global. 
