@@ -45,9 +45,11 @@ Portanto, cada indivíduo será submetido à todos os tratamentos somente uma ve
 
 Dado o delineamento de experimento escolhido, usaremos o seguinte modelo:
 
-$$Y_{ijk}=\mu+\tau_i+\beta_j+\delta_k+\varepsilon_{ijk}\left\{\begin{matrix}
+$$Y_{ijk}=\mu+\alpha_i+\tau_j+\beta_k+\varepsilon_{ijk}\left\{\begin{matrix}
 i=1,2,3\\ 
 j=1,2,3\\ 
-k=1,2
+k=1,2,3
 \end{matrix}\right.$$
 
+onde  $\alpha_i$ é efeito do i-ésimo dia, $\tau_j$ é o efeito do j-ésimo perído do dia, $\beta_k$ representa o efeitos da k-ésima pessoa e $\mu$ é a média global. 
+$\varepsilon_{ijk}$ é o erro experimental com $\varepsilon_{ijk}  \overset{i.i.d.}{\sim}$ N(0,$\sigma^2$).
