@@ -87,7 +87,5 @@ k=1,2,3
 \end{matrix}\right.$$
 
 
-
-
 onde  $\alpha_i$ é efeito do i-ésimo dia, $\tau_j$ é o efeito do j-ésimo perído do dia, $\beta_k$ representa o efeitos da k-ésima pessoa e $\mu$ é a média global. 
 $\varepsilon_{ijk}$ é o erro experimental com $\varepsilon_{ijk}  \overset{i.i.d.}{\sim}$ N(0,$\sigma^2$).

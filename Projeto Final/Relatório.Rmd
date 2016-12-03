@@ -43,7 +43,7 @@ Portanto, cada indivíduo será submetido à todos os tratamentos somente uma ve
 library(ggplot2)
 library(dae)
 LS.unit <- data.frame(Dia = ordered(rep(c("Seg","Qua","Sex"), times=3)),
-Pessoa = factor(rep(c("P1","P2","P3"), each=3)))
+Pessoa = factor(rep(c("A","B","C"), each=3)))
 LS.ran <- data.frame(tratamento = factor(c("manhã","tarde","noite",  "tarde","noite","manhã", "noite","manhã","tarde")))
 #data.frame(LS.unit, LS.ran)
 
@@ -51,14 +51,14 @@ SquareLatin1 <- fac.layout(unrandomized=LS.unit, randomized=LS.ran,seed = 4578)
 
 
 LS.unit <- data.frame(Dia = ordered(rep(c("Seg","Qua","Sex"), times=3)),
-Pessoa = factor(rep(c("P4","P5","P6"), each=3)))
+Pessoa = factor(rep(c("D","E","F"), each=3)))
 LS.ran <- data.frame(tratamento = factor(c("manhã","tarde","noite",  "tarde","noite","manhã", "noite","manhã","tarde")))
 #data.frame(LS.unit, LS.ran)
 
 SquareLatin2 <- fac.layout(unrandomized=LS.unit, randomized=LS.ran,seed = 784546589)
 
 LS.unit <- data.frame(Dia = ordered(rep(c("Seg","Qua","Sex"), times=3)),
-Pessoa = factor(rep(c("P7","P8","P9"), each=3)))
+Pessoa = factor(rep(c("G","H","I"), each=3)))
 LS.ran <- data.frame(tratamento = factor(c("manhã","tarde","noite",  "tarde","noite","manhã", "noite","manhã","tarde")))
 #data.frame(LS.unit, LS.ran)
 
@@ -67,7 +67,7 @@ SquareLatin3 <- fac.layout(unrandomized=LS.unit, randomized=LS.ran,seed = 487845
 
 | 1º Quadrado Latino: | Dia da Semana | Pessoa |    |    | 2º Quadrado Latino: | Dia da Semana | Pessoa |    |    | 3º Quadrado Latino: | Dia da Semana | Pessoa |    |    |
 |---------------------|---------------|--------|----|----|---------------------|---------------|--------|----|----|---------------------|---------------|--------|----|----|
-|                     |               | P1     | P2 | P3 |                     |               | P4     | P5 | P6 |                     |               | P7     | P8 | P9 |
+|                     |               | A     | B | C |                     |               | D     | E | F |                     |               | G     | H | I |
 |                     | Seg           | T      | N  | M  |                     | Seg           | T      | M  | N  |                     | Seg           | N      | T  | M  |
 |                     | Qua           | N      | M  | T  |                     | Qua           | N      | T  | M  |                     | Qua           | M      | N  | T  |
 |                     | Sex           | M      | T  | N  |                     | Sex           | M      | N  | T  |                     | Sex           | T      | M  | N  |
