@@ -89,3 +89,66 @@ k=1,2,3
 
 onde  $\alpha_i$ é efeito do i-ésimo dia, $\tau_j$ é o efeito do j-ésimo perído do dia, $\beta_k$ representa o efeitos da k-ésima pessoa e $\mu$ é a média global. 
 $\varepsilon_{ijk}$ é o erro experimental com $\varepsilon_{ijk}  \overset{i.i.d.}{\sim}$ N(0,$\sigma^2$).
+
+#Análises
+
+
+```{r echo=FALSE}
+#Leitura dos dados e ajustes na ordem dos níveis dos dados
+
+setwd(choose.dir())
+dados <- read.csv2('testedados.csv',header = TRUE)
+
+dados$Periodo <- factor(dados$Periodo,levels = c("Manha","Tarde","Noite"))
+
+dados$Pessoa <- factor(dados$Pessoa,levels = c("A","B","C","D","E","F","G","H","I"))
+
+dados$Dia <- factor(dados$Dia,levels = c("Segunda-Feira","Quarta-Feira","Sexta-Feira"))
+
+```
+
+
+```{r echo=FALSE}
+#Análise Descritiva
+
+library(ggplot2)
+
+Periodo <- ggplot(dados,aes(Periodo,Tempo_m)) + geom_boxplot()
+
+
+Pessoa <- ggplot(dados,aes(Pessoa,Tempo_m)) + geom_boxplot()
+
+
+Dia <- ggplot(dados,aes(Dia,Tempo_m)) + geom_boxplot()
+
+library(gridExtra)
+
+grid.arrange(Periodo,Dia,ncol=2)
+
+Pessoa
+```
+
+
+```{r echo=FALSE}
+#modelo e ANOVA
+fit <- lm(Tempo_m~ Periodo + Dia + Pessoa, data = dados)
+tblanova <- anova(fit)
+
+#ajustes para apresentar resultados mais limpos
+tblanova$`Sum Sq` <- round(tblanova$`Sum Sq`,3)
+
+tblanova$`Mean Sq` <- round(tblanova$`Mean Sq`,3)
+
+tblanova$`F value` <- ifelse(is.na(tblanova$`F value`)," ", round(tblanova$`F value`,3))
+
+tblanova$`Pr(>F)` <- ifelse(is.na(tblanova$`Pr(>F)`)," ",ifelse(tblanova$`Pr(>F)`<0.001,"<0.001",round(tblanova$`Pr(>F)`,3)))
+
+library("knitr")
+kable(tblanova)
+```
+
+
+```{r echo=FALSE}
+par(mfrow=c(2,2))
+plot(fit)
+```
