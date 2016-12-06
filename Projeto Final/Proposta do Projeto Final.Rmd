@@ -2,7 +2,10 @@
 title: "Proposta do Projeto Final de ME623"
 author: "Eliane Siqueira RA:155233 Guilherme Pazian RA:160323"
 date: "6 de dezembro de 2016"
+header-includes:
+- \usepackage{graphicx}
 output: pdf_document
+fontsize: 10pt
 ---
 #Motivação
 
@@ -24,7 +27,11 @@ o período da manhã corresponde ao período anterior ao meio dia,o período da 
 A variável resposta, tempo de resolução de um sudoku, será medida por um cronômetro. 
 O Sudoku é um quebra cabeça baseado na colocação lógica de números de 1 a 9, o mesmo é formado por 9 linhas na horizontal, 9 colunas na vertical  e 9 quadrados menores, subdivididos pelo quadrado maior. O jogo consiste em encontrar o lugar certo para inserirmos um número de modo que ele não se repita na mesma linha, na mesma coluna ou no mesmo subquadrado.
 
-![Sudoku]("sudoku")
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=9.5cm, height=9cm]{sudoku/sudoku.jpg}
+    \caption{Estrutura do Sudoku}
+\end{figure}
 
 Sabemos que a capacidade e rapidez de raciocínio varia de pessoa para pessoa e que o dia da semana pode influenciar no desempenho,  porém não estamos interessados em medir tal variação, o que nos indica que é razoável considerar os dias e as pessoas como fatores ruídos.
 A fim de tentar minimizar a influência da relação supracitada sobre o experimento, vamos considerar os dias e as pessoas como blocos. 
@@ -71,11 +78,8 @@ SquareLatin3 <- fac.layout(unrandomized=LS.unit, randomized=LS.ran,seed = 487845
 |                     | Qua           | N      | M  | T  |                     | Qua           | N      | T  | M  |                     | Qua           | M      | N  | T  |
 |                     | Sex           | M      | T  | N  |                     | Sex           | M      | N  | T  |                     | Sex           | T      | M  | N  |
 
-Seg: Segunda-feira  Qua: Quarta-feira   Sex:Sexta-feira  
-Pi= Pessoa i. (i=1,...,9)  
-M: Período da manhã   T: Período da Tarde   N: Período da Noite  
-  
-OBS: Os quadrados latinos acima foram confeccionados a partir do código para aleatorização de quadrados latinos disponibilizado na página do curso.
+Seg: Segunda-feira  Qua: Quarta-feira   Sex:Sexta-feira  Pi= Pessoa i. (i=1,...,9)  M: Período da manhã   T: Período da Tarde   N: Período da Noite  
+**Observação**: Os quadrados latinos acima foram confeccionados a partir do código para aleatorização de quadrados latinos disponibilizado na página do curso.
   
 Dado o delineamento de experimento escolhido, usaremos o seguinte modelo:
 
