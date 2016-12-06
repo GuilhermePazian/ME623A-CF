@@ -1,0 +1,90 @@
+---
+title: "Proposta do Projeto Final de ME623"
+author: "Eliane Siqueira RA:155233 Guilherme Pazian RA:160323"
+date: "6 de dezembro de 2016"
+output: pdf_document
+---
+#Motivação
+
+  Atualmente muito se discute sobre eficiência no âmbito estudantil, nós, alunos,  buscamos sempre a melhor maneira para se aproveitar o tempo de estudo a fim de se obter um maior rendimento no processo de aprendizagem, porém, muitas vezes temos dificuldades em manter a concentração mesmo com esforço, motivação e disciplina. A partir disto, muitos preocupam-se em entender e/ou controlar outros fatores além daqueles intrínsecos à cada aluno. Entre estes fatores, os mais comumente apontados são relacionados ao horário e ambiente de estudo, porém estes acabam sendo tomados por uma forma muito subjetiva, uma vez que não conseguimos definir claramente quais são os fatores que têm influência significativa no processo de aprendizagem.
+Duas das habilidades mais importantes para se obter um bom rendimento no processo de aprendizado são “rapidez de raciocínio” e o “alto nível de concentração”. Um dos fatores que mais são apontados pelos alunos como grande influência no rendimento nos estudos é o período do dia (manhã, tarde e noite), e por isso, este será o fator de interesse deste experimento. Temos interesse também em obter resultados para o nosso perfil estudantil.
+Entendemos que a área de estudo, estilo de vida e idade dos estudantes pode apresentar alguma influência nos resultados do experimento, por isso, dado nosso interesse, decidimos restringir este experimento ao ambiente em que estamos inseridos, ou seja, decidimos obter resultados somente para o perfil estudantil: “Estudantes de estatística da UNICAMP que tenham entre  20 e 26 anos” . Entendemos que tal perfil é bem razoável, pois contempla a grande maioria dos alunos do nosso curso e estes, quanto ao experimento, são semelhantes entre si, uma vez que a área de estudo é a mesma entre eles, o estilo de vida é similar e a faixa de idade definida não deve permitir que ocorram grandes diferenças de resultados entre os indivíduos devido à idade dos mesmos.
+Dado o ambiente quantitativo em que nós estamos inseridos (Curso de Estatística), decidimos que é razoável quantificar  a rapidez de raciocínio e o nível de concentração medindo o tempo de resolução de um Sudoku, uma vez que, resolver o Sudoku requer paciência, atenção e um pouco de lógica matemática para ajudar durante o processo de encaixar os números nos seus devidos lugares.
+Por hora, não é de nosso interesse fazer inferência à alguma população (por isso não utilizaremos técnicas de amostragem), mas sim compreender a influência dos períodos do dia no rendimento no processo de aprendizagem de alunos com perfil semelhante ao nosso.
+
+
+#Objetivo
+
+O objetivo do nosso experimento é verificar se existe influência significativa do período do dia (manhã, tarde, noite) na rapidez de raciocínio e no nível de concentração em alunos com perfil semelhante ao nosso (estudantes de estatística da UNICAMP que tenham entre  20 e 26 anos).
+
+#Planejamento
+
+  Queremos comparar o desempenho em três períodos do dia, manhã, tarde e noite, onde:
+o período da manhã corresponde ao período anterior ao meio dia,o período da tarde à após às 13:00hs e antes das 17:30hs e o período da noite após às 19:00hs.
+A variável resposta, tempo de resolução de um sudoku, será medida por um cronômetro. 
+O Sudoku é um quebra cabeça baseado na colocação lógica de números de 1 a 9, o mesmo é formado por 9 linhas na horizontal, 9 colunas na vertical  e 9 quadrados menores, subdivididos pelo quadrado maior. O jogo consiste em encontrar o lugar certo para inserirmos um número de modo que ele não se repita na mesma linha, na mesma coluna ou no mesmo subquadrado.
+
+![Sudoku]("sudoku")
+
+Sabemos que a capacidade e rapidez de raciocínio varia de pessoa para pessoa e que o dia da semana pode influenciar no desempenho,  porém não estamos interessados em medir tal variação, o que nos indica que é razoável considerar os dias e as pessoas como fatores ruídos.
+A fim de tentar minimizar a influência da relação supracitada sobre o experimento, vamos considerar os dias e as pessoas como blocos. 
+Portanto, cada indivíduo será submetido à todos os tratamentos somente uma vez cada um.
+
+#Delineamento Experimental
+
+  Para realizar as análises, o delineamento que vamos utilizar é o **Quadrado latino**, onde os fatores ruídos serão: "Dia da Semana" e "Pessoa". Vamos considerar três dias da semana, segunda, quarta e sexta e três pessoas diferentes(Pessoa A,Pessoa B e Pessoa C). 
+  Devido à pequena dimensão do quadrado latino (3x3) teremos poucos graus de liberdade para o erro, o que pode acarretar equívocos na interpretação dos resultados. A Fim de resolver esta situação, iremos realizar 3 replicações nos quadrados latinos, mantendo os mesmos dias da semana em todas as replicações e variando as pessoas. Ou seja, utilizaremos então o delineamento **Quadrados latinos com Replicação**.
+    Onde o fator ruído "Dia da semana" manteremos os mesmos e fator ruído pessoa agora terá nove níveis (A,B,C,D,E,F,G, H,I) como se está representado abaixo: 
+  
+```{r echo= FALSE}
+#código para aleatorização dos quadrados latinos
+
+library(ggplot2)
+library(dae)
+LS.unit <- data.frame(Dia = ordered(rep(c("Seg","Qua","Sex"), times=3)),
+Pessoa = factor(rep(c("A","B","C"), each=3)))
+LS.ran <- data.frame(tratamento = factor(c("manhã","tarde","noite",  "tarde","noite","manhã", "noite","manhã","tarde")))
+#data.frame(LS.unit, LS.ran)
+
+SquareLatin1 <- fac.layout(unrandomized=LS.unit, randomized=LS.ran,seed = 4578)
+
+
+LS.unit <- data.frame(Dia = ordered(rep(c("Seg","Qua","Sex"), times=3)),
+Pessoa = factor(rep(c("D","E","F"), each=3)))
+LS.ran <- data.frame(tratamento = factor(c("manhã","tarde","noite",  "tarde","noite","manhã", "noite","manhã","tarde")))
+#data.frame(LS.unit, LS.ran)
+
+SquareLatin2 <- fac.layout(unrandomized=LS.unit, randomized=LS.ran,seed = 784546589)
+
+LS.unit <- data.frame(Dia = ordered(rep(c("Seg","Qua","Sex"), times=3)),
+Pessoa = factor(rep(c("G","H","I"), each=3)))
+LS.ran <- data.frame(tratamento = factor(c("manhã","tarde","noite",  "tarde","noite","manhã", "noite","manhã","tarde")))
+#data.frame(LS.unit, LS.ran)
+
+SquareLatin3 <- fac.layout(unrandomized=LS.unit, randomized=LS.ran,seed = 48784559)
+```
+
+| 1º Quadrado Latino: | Dia da Semana | Pessoa |    |    | 2º Quadrado Latino: | Dia da Semana | Pessoa |    |    | 3º Quadrado Latino: | Dia da Semana | Pessoa |    |    |
+|---------------------|---------------|--------|----|----|---------------------|---------------|--------|----|----|---------------------|---------------|--------|----|----|
+|                     |               | A     | B | C |                     |               | D     | E | F |                     |               | G     | H | I |
+|                     | Seg           | T      | N  | M  |                     | Seg           | T      | M  | N  |                     | Seg           | N      | T  | M  |
+|                     | Qua           | N      | M  | T  |                     | Qua           | N      | T  | M  |                     | Qua           | M      | N  | T  |
+|                     | Sex           | M      | T  | N  |                     | Sex           | M      | N  | T  |                     | Sex           | T      | M  | N  |
+
+Seg: Segunda-feira  Qua: Quarta-feira   Sex:Sexta-feira  
+Pi= Pessoa i. (i=1,...,9)  
+M: Período da manhã   T: Período da Tarde   N: Período da Noite  
+  
+OBS: Os quadrados latinos acima foram confeccionados a partir do código para aleatorização de quadrados latinos disponibilizado na página do curso.
+  
+Dado o delineamento de experimento escolhido, usaremos o seguinte modelo:
+
+$$Y_{ijk}=\mu+\alpha_i+\tau_j+\beta_k+\varepsilon_{ijk}\left\{\begin{matrix}
+i=1,2,3\\ 
+j=1,2,3\\ 
+k=1,2,3
+\end{matrix}\right.$$
+
+
+onde  $\alpha_i$ é efeito do i-ésimo dia, $\tau_j$ é o efeito do j-ésimo perído do dia, $\beta_k$ representa o efeitos da k-ésima pessoa e $\mu$ é a média global. 
+$\varepsilon_{ijk}$ é o erro experimental com $\varepsilon_{ijk}  \overset{i.i.d.}{\sim}$ N(0,$\sigma^2$).
