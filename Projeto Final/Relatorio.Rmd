@@ -1,43 +1,156 @@
 ---
-title: "Projeto Final ME623 - Relatório"
-author: "Eliane Siqueira RA:155233 e Guilherme Pazian RA:160323"
-date: "1 de dezembro de 2016"
-output: pdf_document
+title: ""
+lang: pt-br
+header-includes:
+- \usepackage{setspace} #pacote para espaço duplo
+- \usepackage{indentfirst} #pacote para identação
+- \usepackage[utf8]{inputenc}
+- \usepackage{mathptmx}
+- \usepackage{enumerate}
+- \usepackage{url} #pacote para iserir link
+- \usepackage{lipsum}
+- \usepackage{multirow} #pacote para mesclar linhas de tabela
+output:
+  pdf_document:
+  html_document: default
+  fig_caption: yes
+  mainfont: Times New Roman
+  
+fontsize: 10pt
+
 ---
 
-#Motivação
+```{r legendas, echo=FALSE, cache=TRUE,warning=FALSE}
 
-  Atualmente muito se discute sobre eficiência no âmbito estudantil, nós, alunos,  buscamos sempre a melhor maneira para se aproveitar o tempo de estudo a fim de se obter um maior rendimento no processo de aprendizagem, porém, muitas vezes temos dificuldades em manter a concentração mesmo com esforço, motivação e disciplina. A partir disto, muitos preocupam-se em entender e/ou controlar outros fatores além daqueles intrínsecos à cada aluno. Entre estes fatores, os mais comumente apontados são relacionados ao horário e ambiente de estudo, porém estes acabam sendo tomados por uma forma muito subjetiva, uma vez que não conseguimos definir claramente quais são os fatores que têm influência significativa no processo de aprendizagem.
+#pacote para fazer legenda
+library(captioner)
+library(tidyverse)
+
+figs <- captioner(prefix="Figura")
+tbls <- captioner(prefix="Tabela")
+#legenda para as tabelas
+
+# legenda para a primeira tabela(estats descr) do primeiro exercício
+legenda_table1 = tbls(name="table_estat_descr1",caption = "Estatísticas Descritivas")
+legenda_table2 = tbls(name="table_anova",caption = "Resultados para a ANOVA")
+#`r legenda_table2`
+#legendas para os gráficos
+
+#legenda para o primeiro Boxplot
+legenda_imagem1 = figs(name="sudoku",caption = "Estrutura do Sudoku")
+legenda_graf2 = figs(name="graf1_boxplot1",caption = "Boxplot Comparativo")
+legenda_graf3 = figs(name="graf1_boxplot2",caption = "Boxplot Comparativo")
+legenda_graf4 = figs(name="graf1_residuo",caption = "Análise de Resíduo")
+#`r legenda_graf2`
+#legenda para o primeiro grárico de dispersão
+
+```
+
+\begin{titlepage}
+\begin{center}
+\thispagestyle{empty}
+\begin{figure}[!htb]
+\begin{center}
+\begin{minipage}[b]{0.5\linewidth}
+\begin{center}
+\includegraphics[width=100pt,height=150pt]{logo/logoimeccunicamp.png}
+\end{center}
+\end{minipage}
+\begin{minipage}[b]{0.7\linewidth}
+\begin{center}
+\vspace*{1cm}
+ {\large \bf Universidade Estadual de Campinas\\[5pt]
+Instituto de Matemática, Estatística e Computação Cientifica\\[3pt]
+Departamento de Estatística}
+\end{center}
+\end{minipage}
+\end{center}
+\end{figure}
+\vspace*{\stretch{1}}
+\begin{center}
+\vspace*{5cm}
+{\huge \bf Relatório \\[7pt]
+Projeto Final de ME623}
+\end{center}
+\vspace*{\stretch{1}}
+\begin{center}
+\vspace*{4cm}
+{\Large \bf Eliane Ramos de Siqueira  RA:155233 \\
+Guilherme Pazian  RA:160323 \break
+}\\[3pt]
+{\large \bf Professora: Mariana Rodrigues Motta}\\[5pt]
+\end{center}
+\vspace*{\stretch{1}}
+\centerline{\bf Campinas-SP, 06 de Dezembro de 2016}
+\vspace*{\stretch{1}}
+\end{center}
+\end{titlepage}
+
+\onehalfspacing
+\newpage
+
+\begin{enumerate}
+\item Introdução
+\end{enumerate}
+\vspace{0.3cm}
+\setlength{\parindent}{3em}
+
+Atualmente muito se discute sobre eficiência no âmbito estudantil, nós, alunos,  buscamos sempre a melhor maneira para se aproveitar o tempo de estudo a fim de se obter um maior rendimento no processo de aprendizagem, porém, muitas vezes temos dificuldades em manter a concentração mesmo com esforço, motivação e disciplina. A partir disto, muitos preocupam-se em entender e/ou controlar outros fatores além daqueles intrínsecos à cada aluno. Entre estes fatores, os mais comumente apontados são relacionados ao horário e ambiente de estudo, porém estes acabam sendo tomados por uma forma muito subjetiva, uma vez que não conseguimos definir claramente quais são os fatores que têm influência significativa no processo de aprendizagem.
+
 Duas das habilidades mais importantes para se obter um bom rendimento no processo de aprendizado são “rapidez de raciocínio” e o “alto nível de concentração”. Um dos fatores que mais são apontados pelos alunos como grande influência no rendimento nos estudos é o período do dia (manhã, tarde e noite), e por isso, este será o fator de interesse deste experimento. Temos interesse também em obter resultados para o nosso perfil estudantil.
+
 Entendemos que a área de estudo, estilo de vida e idade dos estudantes pode apresentar alguma influência nos resultados do experimento, por isso, dado nosso interesse, decidimos restringir este experimento ao ambiente em que estamos inseridos, ou seja, decidimos obter resultados somente para o perfil estudantil: “Estudantes de estatística da UNICAMP que tenham entre  20 e 26 anos” . Entendemos que tal perfil é bem razoável, pois contempla a grande maioria dos alunos do nosso curso e estes, quanto ao experimento, são semelhantes entre si, uma vez que a área de estudo é a mesma entre eles, o estilo de vida é similar e a faixa de idade definida não deve permitir que ocorram grandes diferenças de resultados entre os indivíduos devido à idade dos mesmos.
+
 Dado o ambiente quantitativo em que nós estamos inseridos (Curso de Estatística), decidimos que é razoável quantificar  a rapidez de raciocínio e o nível de concentração medindo o tempo de resolução de um Sudoku, uma vez que, resolver o Sudoku requer paciência, atenção e um pouco de lógica matemática para ajudar durante o processo de encaixar os números nos seus devidos lugares.
+
 Por hora, não é de nosso interesse fazer inferência à alguma população (por isso não utilizaremos técnicas de amostragem), mas sim compreender a influência dos períodos do dia no rendimento no processo de aprendizagem de alunos com perfil semelhante ao nosso.
 
-
-#Objetivo
+\vspace{0.3cm}
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item Objetivo
+\end{enumerate}
+\vspace{0.3cm}
 
 O objetivo do nosso experimento é verificar se existe influência significativa do período do dia (manhã, tarde, noite) na rapidez de raciocínio e no nível de concentração em alunos com perfil semelhante ao nosso (estudantes de estatística da UNICAMP que tenham entre  20 e 26 anos).
 
-#Planejamento
+\vspace{0.3cm}
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item Planejamento
+\end{enumerate}
+\vspace{0.3cm}
 
   Queremos comparar o desempenho em três períodos do dia, manhã, tarde e noite, onde:
 o período da manhã corresponde ao período anterior ao meio dia,o período da tarde à após às 13:00hs e antes das 17:30hs e o período da noite após às 19:00hs.
 A variável resposta, tempo de resolução de um sudoku, será medida por um cronômetro. 
 O Sudoku é um quebra cabeça baseado na colocação lógica de números de 1 a 9, o mesmo é formado por 9 linhas na horizontal, 9 colunas na vertical  e 9 quadrados menores, subdivididos pelo quadrado maior. O jogo consiste em encontrar o lugar certo para inserirmos um número de modo que ele não se repita na mesma linha, na mesma coluna ou no mesmo subquadrado.
 
-![Sudoku]("sudoku")
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=9.5cm, height=9cm]{sudoku/sudoku.jpg}
+\end{figure}
+
+\begin{center}
+`r legenda_imagem1`
+\end{center}
 
 Sabemos que a capacidade e rapidez de raciocínio varia de pessoa para pessoa e que o dia da semana pode influenciar no desempenho,  porém não estamos interessados em medir tal variação, o que nos indica que é razoável considerar os dias e as pessoas como fatores ruídos.
 A fim de tentar minimizar a influência da relação supracitada sobre o experimento, vamos considerar os dias e as pessoas como blocos. 
 Portanto, cada indivíduo será submetido à todos os tratamentos somente uma vez cada um.
 
-#Delineamento Experimental
+\vspace{0.3cm}
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item Delineamento Experimental
+\end{enumerate}
+\vspace{0.3cm}
 
   Para realizar as análises, o delineamento que vamos utilizar é o **Quadrado latino**, onde os fatores ruídos serão: "Dia da Semana" e "Pessoa". Vamos considerar três dias da semana, segunda, quarta e sexta e três pessoas diferentes(Pessoa A,Pessoa B e Pessoa C). 
   Devido à pequena dimensão do quadrado latino (3x3) teremos poucos graus de liberdade para o erro, o que pode acarretar equívocos na interpretação dos resultados. A Fim de resolver esta situação, iremos realizar 3 replicações nos quadrados latinos, mantendo os mesmos dias da semana em todas as replicações e variando as pessoas. Ou seja, utilizaremos então o delineamento **Quadrados latinos com Replicação**.
     Onde o fator ruído "Dia da semana" manteremos os mesmos e fator ruído pessoa agora terá nove níveis (A,B,C,D,E,F,G, H,I) como se está representado abaixo: 
   
-```{r echo= FALSE}
+```{r echo= FALSE,warning=FALSE}
 #código para aleatorização dos quadrados latinos
 
 library(ggplot2)
@@ -72,33 +185,43 @@ SquareLatin3 <- fac.layout(unrandomized=LS.unit, randomized=LS.ran,seed = 487845
 |                     | Qua           | N      | M  | T  |                     | Qua           | N      | T  | M  |                     | Qua           | M      | N  | T  |
 |                     | Sex           | M      | T  | N  |                     | Sex           | M      | N  | T  |                     | Sex           | T      | M  | N  |
 
-Seg: Segunda-feira  Qua: Quarta-feira   Sex:Sexta-feira  
-Pi= Pessoa i. (i=1,...,9)  
-M: Período da manhã   T: Período da Tarde   N: Período da Noite  
-  
-OBS: Os quadrados latinos acima foram confeccionados a partir do código para aleatorização de quadrados latinos disponibilizado na página do curso.
+Seg: Segunda-feira  Qua: Quarta-feira   Sex:Sexta-feira  Pi= Pessoa i. (i=1,...,9)  M: Período da manhã   T: Período da Tarde   N: Período da Noite  
+**Observação**: Os quadrados latinos acima foram confeccionados a partir do código para aleatorização de quadrados latinos disponibilizado na página do curso.
   
 Dado o delineamento de experimento escolhido, usaremos o seguinte modelo:
 
-$$Y_{ijk}=\mu+\alpha_i+\tau_j+\beta_k+\varepsilon_{ijk}\left\{\begin{matrix}
+$$Y_{ijk}=\mu+\alpha_{i(l)}+\tau_j+\beta_k+\psi_l+\varepsilon_{ijkl}\left\{\begin{matrix}
 i=1,2,3\\ 
 j=1,2,3\\ 
-k=1,2,3
+k=1,2,3\\
+l=1,2,3
 \end{matrix}\right.$$
 
 
-onde  $\alpha_i$ é efeito do i-ésimo dia, $\tau_j$ é o efeito do j-ésimo perído do dia, $\beta_k$ representa o efeitos da k-ésima pessoa e $\mu$ é a média global. 
+onde  $\alpha_{i(l)}$ representa o efeito do i-ésimo dia na replicação l. $\tau_j$ representa o efeito do j-ésimo perído do dia, $\beta_k$ representa o efeitos da k-ésima pessoa e $\mu$ é a média global. 
 $\varepsilon_{ijk}$ é o erro experimental com $\varepsilon_{ijk}  \overset{i.i.d.}{\sim}$ N(0,$\sigma^2$).
 
-#Análises
+\vspace{0.3cm}
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item Análises
+\end{enumerate}
+\vspace{0.3cm}
 
-
-```{r echo=FALSE}
+Pela figura do boxplot abaixo, podemos notar que o tempo de resolução do sudoku parece não diferir para dias diferentes.Porém, há uma diferença significativa de pessoa para pessoa. Já o período, parece interferir no tempo de resolução, uma vez que no período da tarde, os tempos são menores. Nota-se também a presença de dois outliers, para os perídos da tarde e noite, e para os dias 1 e 3 (Segunda-feira e Sexta-feira).
+\newpage
+```{r echo=FALSE,warning=FALSE}
 #Leitura dos dados e ajustes na ordem dos níveis dos dados
 
-setwd(choose.dir())
-dados <- read.csv2('testedados.csv',header = TRUE)
-
+#setwd(choose.dir())
+dados <- read.csv2("dados.csv",header = TRUE)
+dados=dados[,3:7]
+dados=dados[,-4]
+pessoa<-c(rep("A",3),rep("B",3),rep("C",3),rep("A",3),rep("B",3),rep("C",3),rep("A",3),rep("B",3),rep("C",3))
+dados<-cbind(dados,pessoa)
+replicacao<-c(rep("1",9),rep("2",9),rep("3",9))
+dados=cbind(dados,replicacao)
+#transformando em fator
 dados$Periodo <- factor(dados$Periodo,levels = c("Manha","Tarde","Noite"))
 
 dados$Pessoa <- factor(dados$Pessoa,levels = c("A","B","C","D","E","F","G","H","I"))
@@ -108,31 +231,44 @@ dados$Dia <- factor(dados$Dia,levels = c("Segunda-Feira","Quarta-Feira","Sexta-F
 ```
 
 
-```{r echo=FALSE}
+```{r,echo=FALSE, fig.align='center', fig.height=4,fig.width=7,warning=FALSE}
 #Análise Descritiva
-
 library(ggplot2)
 
-Periodo <- ggplot(dados,aes(Periodo,Tempo_m)) + geom_boxplot()
+Periodo <- ggplot(dados,aes(Periodo,Tempo_m,fill=Periodo)) + geom_boxplot(outlier.colour = "red")+labs(title = "Tempo em minutos x Período " , x = "Período", y="Tempo")+theme_bw()+ scale_fill_brewer(palette = "Oranges")+theme(plot.title = element_text(hjust = 0.5))+theme(legend.position = "none")
 
+Pessoa <- ggplot(dados,aes(Pessoa,Tempo_m,fill=Pessoa)) + geom_boxplot(outlier.colour = "red")+labs(title = "Tempo em minutos x Pessoa " , x = "Pessoa", y="Tempo") +theme_bw()+theme(plot.title = element_text(hjust = 0.5),legend.position = "none")+ scale_fill_brewer(palette = "Oranges")
 
-Pessoa <- ggplot(dados,aes(Pessoa,Tempo_m)) + geom_boxplot()
-
-
-Dia <- ggplot(dados,aes(Dia,Tempo_m)) + geom_boxplot()
+Dia <- ggplot(dados,aes(Dia,Tempo_m,fill=Dia)) + geom_boxplot(outlier.colour = "red")+labs(title = "Tempo em minutos x Dia " , x = "Dia", y="Tempo")+theme_classic()+theme(plot.title = element_text(hjust = 0.5))+theme_bw()+ scale_fill_brewer(palette = "Oranges")+theme(legend.position = "none")
 
 library(gridExtra)
 
-grid.arrange(Periodo,Dia,ncol=2)
-
-Pessoa
 ```
 
+```{r ,echo=FALSE,fig.align='center',fig.height=3,fig.width=6,warning=FALSE}
+grid.arrange(Periodo,Dia,ncol=2)
+```
+\begin{center}
+`r legenda_graf2`
+\end{center}
+```{r, echo=F,fig.align='center',fig.height=3,fig.width=4, warning=FALSE}
+Pessoa
+```
+\begin{center}
+`r legenda_graf3`
+\end{center}
 
-```{r echo=FALSE}
+
+Na tabela abaixo, temos os valores para a ANOVA, onde queremos testar:
+$H_{0}: \mu_1 = \mu_2 =\mu_3$ vs $H_{1}:\mu_{i}!=\mu_{j}$ para pelo menos um par (i, j)
+\begin{center}
+`r legenda_table2`
+\end{center}
+
+```{r ,echo=FALSE,warning=FALSE}
 #modelo e ANOVA
-fit <- lm(Tempo_m~ Periodo + Dia + Pessoa, data = dados)
-tblanova <- anova(fit)
+fit<-lm(Tempo_m~replicacao+pessoa+replicacao/Dia+Periodo,data = dados)
+tblanova<-anova(fit)
 
 #ajustes para apresentar resultados mais limpos
 tblanova$`Sum Sq` <- round(tblanova$`Sum Sq`,3)
@@ -143,7 +279,7 @@ tblanova$`F value` <- ifelse(is.na(tblanova$`F value`)," ", round(tblanova$`F va
 
 tblanova$`Pr(>F)` <- ifelse(is.na(tblanova$`Pr(>F)`)," ",ifelse(tblanova$`Pr(>F)`<0.001,"<0.001",round(tblanova$`Pr(>F)`,3)))
 
-library("knitr")
+library(knitr)
 kable(tblanova)
 ```
 
@@ -152,3 +288,6 @@ kable(tblanova)
 par(mfrow=c(2,2))
 plot(fit)
 ```
+\begin{center}
+`r legenda_graf4`
+\end{center}
