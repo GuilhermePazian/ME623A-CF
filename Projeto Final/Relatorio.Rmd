@@ -245,7 +245,7 @@ library(gridExtra)
 
 ```
 
-```{r ,echo=FALSE,fig.align='center',fig.height=3,fig.width=6,warning=FALSE}
+```{r ,echo=FALSE,fig.align='center',fig.height=2.3,fig.width=7,warning=FALSE}
 grid.arrange(Periodo,Dia,ncol=2)
 ```
 \begin{center}
