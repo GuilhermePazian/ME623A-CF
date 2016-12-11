@@ -31,16 +31,18 @@ tbls <- captioner(prefix="Tabela")
 #legenda para as tabelas
 
 # legenda para a primeira tabela(estats descr) do primeiro exercício
-legenda_table1 = tbls(name="table_estat_descr1",caption = "Estatísticas Descritivas")
-legenda_table2 = tbls(name="table_anova",caption = "Resultados para a ANOVA")
+
+legenda_table1 = tbls(name="table_anova",caption = "Resultados para a ANOVA")
+legenda_table2 = tbls(name="table_qlaleatorizado",caption = "Quadrado Latino Aleatorizado")
 #`r legenda_table2`
 #legendas para os gráficos
 
 #legenda para o primeiro Boxplot
-legenda_imagem1 = figs(name="sudoku",caption = "Estrutura do Sudoku")
 legenda_graf2 = figs(name="graf1_boxplot1",caption = "Boxplot Comparativo")
 legenda_graf3 = figs(name="graf1_boxplot2",caption = "Boxplot Comparativo")
 legenda_graf4 = figs(name="graf1_residuo",caption = "Análise de Resíduo")
+legenda_imagem1 = figs(name="sudoku",caption = "Estrutura do Sudoku")
+legenda_imagem2 = figs(name="sudoku_feito",caption = "Exemplo de sudoku usado no experimento")
 #`r legenda_graf2`
 #legenda para o primeiro grárico de dispersão
 
@@ -190,7 +192,7 @@ $\varepsilon_{ijk}$ é o erro experimental com $\varepsilon_{ijk}  \overset{i.i.
 \end{enumerate}
 \vspace{0.3cm}
 
-Pela figura do boxplot abaixo, podemos notar que o tempo de resolução do sudoku parece não diferir para dias diferentes.Porém, há uma diferença significativa de pessoa para pessoa. Já o período, parece interferir no tempo de resolução, uma vez que no período da tarde, os tempos são menores. Nota-se também a presença de dois outliers, para os perídos da tarde e noite, e para os dias 1 e 3 (Segunda-feira e Sexta-feira).
+Pela figura do boxplot abaixo, podemos notar que o tempo de resolução do sudoku parece não diferir para dias diferentes. Porém, há uma diferença significativa de pessoa para pessoa. Já o período, parece interferir no tempo de resolução, uma vez que no período da tarde, os tempos são menores. Nota-se também a presença de dois outliers, para os períodos da tarde e noite, e para os dias 1 e 3 (Segunda-feira e Sexta-feira).
 
 ```{r echo=FALSE,warning=FALSE}
 #Leitura dos dados e ajustes na ordem dos níveis dos dados
@@ -233,7 +235,7 @@ grid.arrange(Periodo,Dia,ncol=2)
 \begin{center}
 `r legenda_graf2`
 \end{center}
-```{r, echo=F,fig.align='center',fig.height=3,fig.width=4, warning=FALSE}
+```{r, echo=F,fig.align='center',fig.height=2.5,fig.width=3.5, warning=FALSE}
 Pessoa
 ```
 \begin{center}
@@ -242,9 +244,9 @@ Pessoa
 
 
 Na tabela abaixo, temos os valores para a ANOVA, onde queremos testar:
-$H_{0}: \mu_1 = \mu_2 =\mu_3$ vs $H_{1}:\mu_{i} \neq \mu_{j}$ para pelo menos um par (i, j). Observe que o teste de igualdade de médias para o período do dia acusou um p-valor de 0.386, o que indica, à níveis de significância usuais (0.01 a 0.10) que não existe influência significativa do período do dia(manhã, tarde, noite) em relação ao tempo de solução de um sudoku. Mais expecificamente, não foi constatado, neste experimento, indícios de que exista influência significativa do período do dia (manhã, tarde, noite) na rapidez de raciocínio e no nível de concentração em alunos com perfil semelhante ao nosso (estudantes de estatística da UNICAMP que tenham entre  20 e 26 anos), levando-se em consideração que estas habilidades (rapidez de raciocínio e no nível de concentração) foram medidos via tempo de resolução de um sudoku. Porém não pode-se confiar nestes resultados sem antes fazer a análise de resíduos, se estes indicarem um bom ajuste os resultados são válidos caso contrário, os resultados não são válidos.
+$H_{0}: \mu_1 = \mu_2 =\mu_3$ vs $H_{1}:\mu_{i} \neq \mu_{j}$ para pelo menos um par (i, j). Observe que o teste de igualdade de médias para o período do dia acusou um p-valor de 0.386, o que indica, à níveis de significância usuais (0.01 a 0.10) que não existe influência significativa do período do dia (manhã, tarde e noite) em relação ao tempo de solução de um sudoku. Mais especificamente, não foi constatado, neste experimento, indícios de que exista influência significativa do período do dia (manhã, tarde, noite) na rapidez de raciocínio e no nível de concentração em alunos com perfil semelhante ao nosso (estudantes de estatística da UNICAMP que tenham entre  20 e 26 anos), levando-se em consideração que estas habilidades (rapidez de raciocínio e no nível de concentração) foram medidos via tempo de resolução de um sudoku. Porém não se pode confiar nestes resultados sem antes fazer a análise de resíduos, se estes indicarem um bom ajuste os resultados são válidos caso contrário, os resultados não são válidos.
 \begin{center}
-`r legenda_table2`
+`r legenda_table1`
 \end{center}
 
 ```{r ,echo=FALSE,warning=FALSE}
@@ -283,10 +285,10 @@ replicacao & 2.00 & 395.94 & 197.97 & 1.456 & 0.266 \\
 \end{tabular}
 \end{table}
 
-Observando os gráficos abaixo, identificamos uma tendência no gráfico "Residual vs Fitted" o que indica uma hetecedasticidade no modelo. O gráfico "Normal Q-Q" apresenta quase todos os pontos muito próximos da reta teórica, o que indica normalidade nos resíduos, neste mesmo gráfico observa-se também dois pontos discrepantes, estes estão consideravelmente distanciados dos demais e da reta teórica, portanto estes, são possíveis outliers.
-Dadas as observações feitas acima, concluimos que o modelo não teve um bom ajuste, portanto os resultados e conclusões  obtidos a partir da tabela ANOVA não são confiáveis. Podemos citar alguns fatores externos aos quais tiveram influência não controlada adequadamente, um dos mais importantes é que a experiência anterior dos participantes quanto ao jogo não era constante, e alguns, por falta de experiência no jogo acabaram tendo desempenho crescente durante o experimento. Outro fator que não pode ser controlado adequadamente foi o ambiente em que se solucionava o sudoku, pois aspectos como silêncio, podem influênciar no desempenho dos participantes do experimento. Contudo, mesmo não apresentando resultados que são de fato confiáveis, conseguimos obter informações relativas ao assunto abordado, e este experimento pode servir de referencia para outros futuros experimentos com objetivo semelhante a este. Como sugestão para próximos experimentos com objetivos semelhantes ao nosso, sugerimos adotar medidas a fim de assegurar que os participantes realizem o experimento em ambientes similares, assim como, selecionar participantes com o mesmo nível de experiência no teste que será realizado.
+Observando os gráficos abaixo, identificamos uma tendência no gráfico "Residual vs Fitted" o que indica uma heterocedasticidade no modelo. O gráfico "Normal Q-Q" apresenta quase todos os pontos muito próximos da reta teórica, o que indica normalidade nos resíduos, neste mesmo gráfico observa-se também dois pontos discrepantes, estes estão consideravelmente distanciados dos demais e da reta teórica, portanto estes, são possíveis outliers.
+Dadas as observações feitas acima, concluímos que o modelo não teve um bom ajuste, portanto os resultados e conclusões  obtidos a partir da tabela ANOVA não são confiáveis. Podemos citar alguns fatores externos aos quais tiveram influência não controlada adequadamente, dentre estes, um dos mais importantes é que a experiência anterior dos participantes quanto ao jogo não era constante, e alguns, por falta de experiência no jogo acabaram tendo desempenho crescente durante o experimento. Outro fator que não pode ser controlado adequadamente foi o ambiente em que se solucionava o sudoku, pois aspectos como silêncio, podem influenciar no desempenho dos participantes do experimento. Contudo, mesmo não apresentando resultados que são de fato confiáveis, conseguimos obter informações relativas ao assunto abordado, e este experimento pode servir de referência para futuros experimentos com objetivo semelhante a este. Como sugestão para próximos experimentos semelhantes ao nosso, sugerimos adotar medidas a fim de assegurar que os participantes realizem o experimento em ambientes similares, assim como, selecionar participantes com o mesmo nível de experiência no teste que será realizado.
 
-```{r echo=FALSE}
+```{r echo=FALSE, fig.align='center',fig.height=4.5,fig.width=6.5}
 par(mfrow=c(2,2))
 plot(fit)
 ```
@@ -295,7 +297,35 @@ plot(fit)
 \end{center}
 
 \newpage
-#Anexo
+
+\newpage
+\begin{enumerate}
+\setcounter{enumi}{5}
+\item Referências Bibliográficas
+\end{enumerate}
+
+\vspace{0.3cm}
+
+\begin{itemize}
+  \item Replicação de Quadrado Latino página 12.Disponível em : \url{http://www.unh.edu/halelab/BIOL933/lectures/lect_10.pdf}, Acesso em: 10 de dezembro de 2016.
+  
+  \item Benaglia,T. Notas de aula sobre planejamento e análise de experimentos. Dísponivel na plataforma educacional: \url{http://www.ggte.unicamp.br/eam}
+
+  \item Asheber Abebe. Introduction to Design and Analysis of Experiments with the SAS
+System,\url{http://halweb.uc3m.es/esp/Personal/personas/jmmarin/esp/Disenno/CursoDisExpSAS.pdf}
+  \vspace{0.5cm}
+  
+  
+\end{itemize}
+
+
+\newpage
+\vspace{0.3cm}
+\begin{enumerate}
+\setcounter{enumi}{6}
+\item Anexos
+\end{enumerate}
+\vspace{0.3cm}
 
 \begin{figure}[!ht]
     \centering
@@ -306,14 +336,28 @@ plot(fit)
 `r legenda_imagem1`
 \end{center}
 
-
-
+\begin{center}
+`r legenda_table2`
+\end{center}
 | 1º Quadrado Latino: | Dia da Semana | Pessoa |    |    | 2º Quadrado Latino: | Dia da Semana | Pessoa |    |    | 3º Quadrado Latino: | Dia da Semana | Pessoa |    |    |
 |---------------------|---------------|--------|----|----|---------------------|---------------|--------|----|----|---------------------|---------------|--------|----|----|
 |                     |               | A     | B | C |                     |               | D     | E | F |                     |               | G     | H | I |
 |                     | Seg           | T      | N  | M  |                     | Seg           | T      | M  | N  |                     | Seg           | N      | T  | M  |
 |                     | Qua           | N      | M  | T  |                     | Qua           | N      | T  | M  |                     | Qua           | M      | N  | T  |
 |                     | Sex           | M      | T  | N  |                     | Sex           | M      | N  | T  |                     | Sex           | T      | M  | N  |
+\noindent
+Seg: Segunda-feira, Qua: Quarta-feira Sex:Sexta-feira   
+Pi= Pessoa i. (i=1,...,9)    
+M: Período da manhã, T: Período da Tarde,  N:Período da Noite 
 
-Seg: Segunda-feira  Qua: Quarta-feira   Sex:Sexta-feira  Pi= Pessoa i. (i=1,...,9)  M: Período da manhã   T: Período da Tarde   N: Período da Noite  
 **Observação**: Os quadrados latinos acima foram confeccionados a partir do código para aleatorização de quadrados latinos disponibilizado na página do curso.
+
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=6cm, height=6cm]{sudoku/img003.jpg}
+\end{figure}
+
+\begin{center}
+`r legenda_imagem2`
+\end{center}
