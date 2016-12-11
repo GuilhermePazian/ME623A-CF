@@ -124,16 +124,7 @@ O objetivo do nosso experimento é verificar se existe influência significativa
   Queremos comparar o desempenho em três períodos do dia, manhã, tarde e noite, onde:
 o período da manhã corresponde ao período anterior ao meio dia,o período da tarde à após às 13:00hs e antes das 17:30hs e o período da noite após às 19:00hs.
 A variável resposta, tempo de resolução de um sudoku, será medida por um cronômetro. 
-O Sudoku é um quebra cabeça baseado na colocação lógica de números de 1 a 9, o mesmo é formado por 9 linhas na horizontal, 9 colunas na vertical  e 9 quadrados menores, subdivididos pelo quadrado maior. O jogo consiste em encontrar o lugar certo para inserirmos um número de modo que ele não se repita na mesma linha, na mesma coluna ou no mesmo subquadrado.
-
-\begin{figure}[!ht]
-    \centering
-    \includegraphics[width=9.5cm, height=9cm]{sudoku/sudoku.jpg}
-\end{figure}
-
-\begin{center}
-`r legenda_imagem1`
-\end{center}
+O Sudoku é um quebra cabeça baseado na colocação lógica de números de 1 a 9, o mesmo é formado por 9 linhas na horizontal, 9 colunas na vertical  e 9 quadrados menores, subdivididos pelo quadrado maior. O jogo consiste em encontrar o lugar certo para inserirmos um número de modo que ele não se repita na mesma linha, na mesma coluna ou no mesmo subquadrado (veja a imagem 1 em anexo).
 
 Sabemos que a capacidade e rapidez de raciocínio varia de pessoa para pessoa e que o dia da semana pode influenciar no desempenho,  porém não estamos interessados em medir tal variação, o que nos indica que é razoável considerar os dias e as pessoas como fatores ruídos.
 A fim de tentar minimizar a influência da relação supracitada sobre o experimento, vamos considerar os dias e as pessoas como blocos. 
@@ -148,7 +139,7 @@ Portanto, cada indivíduo será submetido à todos os tratamentos somente uma ve
 
   Para realizar as análises, o delineamento que vamos utilizar é o **Quadrado latino**, onde os fatores ruídos serão: "Dia da Semana" e "Pessoa". Vamos considerar três dias da semana, segunda, quarta e sexta e três pessoas diferentes(Pessoa A,Pessoa B e Pessoa C). 
   Devido à pequena dimensão do quadrado latino (3x3) teremos poucos graus de liberdade para o erro, o que pode acarretar equívocos na interpretação dos resultados. A Fim de resolver esta situação, iremos realizar 3 replicações nos quadrados latinos, mantendo os mesmos dias da semana em todas as replicações e variando as pessoas. Ou seja, utilizaremos então o delineamento **Quadrados latinos com Replicação**.
-    Onde o fator ruído "Dia da semana" manteremos os mesmos e fator ruído pessoa agora terá nove níveis (A,B,C,D,E,F,G, H,I) como se está representado abaixo: 
+    Onde o fator ruído "Dia da semana" manteremos os mesmos e fator ruído pessoa agora terá nove níveis (A,B,C,D,E,F,G, H,I)  (veja a tabela com a representação dos quadrados latinos em anexo). 
   
 ```{r echo= FALSE,warning=FALSE}
 #código para aleatorização dos quadrados latinos
@@ -178,16 +169,7 @@ LS.ran <- data.frame(tratamento = factor(c("manhã","tarde","noite",  "tarde","n
 SquareLatin3 <- fac.layout(unrandomized=LS.unit, randomized=LS.ran,seed = 48784559)
 ```
 
-| 1º Quadrado Latino: | Dia da Semana | Pessoa |    |    | 2º Quadrado Latino: | Dia da Semana | Pessoa |    |    | 3º Quadrado Latino: | Dia da Semana | Pessoa |    |    |
-|---------------------|---------------|--------|----|----|---------------------|---------------|--------|----|----|---------------------|---------------|--------|----|----|
-|                     |               | A     | B | C |                     |               | D     | E | F |                     |               | G     | H | I |
-|                     | Seg           | T      | N  | M  |                     | Seg           | T      | M  | N  |                     | Seg           | N      | T  | M  |
-|                     | Qua           | N      | M  | T  |                     | Qua           | N      | T  | M  |                     | Qua           | M      | N  | T  |
-|                     | Sex           | M      | T  | N  |                     | Sex           | M      | N  | T  |                     | Sex           | T      | M  | N  |
 
-Seg: Segunda-feira  Qua: Quarta-feira   Sex:Sexta-feira  Pi= Pessoa i. (i=1,...,9)  M: Período da manhã   T: Período da Tarde   N: Período da Noite  
-**Observação**: Os quadrados latinos acima foram confeccionados a partir do código para aleatorização de quadrados latinos disponibilizado na página do curso.
-  
 Dado o delineamento de experimento escolhido, usaremos o seguinte modelo:
 
 $$Y_{ijk}=\mu+\alpha_{i(l)}+\tau_j+\beta_k+\psi_l+\varepsilon_{ijkl}\left\{\begin{matrix}
@@ -209,7 +191,7 @@ $\varepsilon_{ijk}$ é o erro experimental com $\varepsilon_{ijk}  \overset{i.i.
 \vspace{0.3cm}
 
 Pela figura do boxplot abaixo, podemos notar que o tempo de resolução do sudoku parece não diferir para dias diferentes.Porém, há uma diferença significativa de pessoa para pessoa. Já o período, parece interferir no tempo de resolução, uma vez que no período da tarde, os tempos são menores. Nota-se também a presença de dois outliers, para os perídos da tarde e noite, e para os dias 1 e 3 (Segunda-feira e Sexta-feira).
-\newpage
+
 ```{r echo=FALSE,warning=FALSE}
 #Leitura dos dados e ajustes na ordem dos níveis dos dados
 
@@ -260,7 +242,7 @@ Pessoa
 
 
 Na tabela abaixo, temos os valores para a ANOVA, onde queremos testar:
-$H_{0}: \mu_1 = \mu_2 =\mu_3$ vs $H_{1}:\mu_{i}!=\mu_{j}$ para pelo menos um par (i, j)
+$H_{0}: \mu_1 = \mu_2 =\mu_3$ vs $H_{1}:\mu_{i} \neq \mu_{j}$ para pelo menos um par (i, j). Observe que o teste de igualdade de médias para o período do dia acusou um p-valor de 0.386, o que indica, à níveis de significância usuais (0.01 a 0.10) que não existe influência significativa do período do dia(manhã, tarde, noite) em relação ao tempo de solução de um sudoku. Mais expecificamente, não foi constatado, neste experimento, indícios de que exista influência significativa do período do dia (manhã, tarde, noite) na rapidez de raciocínio e no nível de concentração em alunos com perfil semelhante ao nosso (estudantes de estatística da UNICAMP que tenham entre  20 e 26 anos), levando-se em consideração que estas habilidades (rapidez de raciocínio e no nível de concentração) foram medidos via tempo de resolução de um sudoku. Porém não pode-se confiar nestes resultados sem antes fazer a análise de resíduos, se estes indicarem um bom ajuste os resultados são válidos caso contrário, os resultados não são válidos.
 \begin{center}
 `r legenda_table2`
 \end{center}
@@ -279,10 +261,30 @@ tblanova$`F value` <- ifelse(is.na(tblanova$`F value`)," ", round(tblanova$`F va
 
 tblanova$`Pr(>F)` <- ifelse(is.na(tblanova$`Pr(>F)`)," ",ifelse(tblanova$`Pr(>F)`<0.001,"<0.001",round(tblanova$`Pr(>F)`,3)))
 
-library(knitr)
-kable(tblanova)
+library(xtable)
+names(tblanova)<-c("GL","Soma de Quadrados","Quadrado Médio", "Estatistica F", "P-Valor")
+library(xtable)
+#tblanovalatex <- print(xtable(tblanova))
+
 ```
 
+\begin{table}[!h]
+\centering
+\begin{tabular}{lrrrrr}
+  \hline
+ & GL & Soma de Quadrados & Quadrado Médio & Estatística F & P-Valor \\ 
+  \hline
+replicacao & 2.00 & 395.94 & 197.97 & 1.456 & 0.266 \\ 
+  pessoa & 2.00 & 163.37 & 81.68 & 0.601 & 0.562 \\ 
+  Periodo & 2.00 & 277.32 & 138.66 & 1.02 & 0.386 \\ 
+  replicacao:Dia & 6.00 & 221.82 & 36.97 & 0.272 & 0.941 \\ 
+  Residuals & 14.00 & 1903.54 & 135.97 &   &   \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+Observando os gráficos abaixo, identificamos uma tendência no gráfico "Residual vs Fitted" o que indica uma hetecedasticidade no modelo. O gráfico "Normal Q-Q" apresenta quase todos os pontos muito próximos da reta teórica, o que indica normalidade nos resíduos, neste mesmo gráfico observa-se também dois pontos discrepantes, estes estão consideravelmente distanciados dos demais e da reta teórica, portanto estes, são possíveis outliers.
+Dadas as observações feitas acima, concluimos que o modelo não teve um bom ajuste, portanto os resultados e conclusões  obtidos a partir da tabela ANOVA não são confiáveis. Podemos citar alguns fatores externos aos quais tiveram influência não controlada adequadamente, um dos mais importantes é que a experiência anterior dos participantes quanto ao jogo não era constante, e alguns, por falta de experiência no jogo acabaram tendo desempenho crescente durante o experimento. Outro fator que não pode ser controlado adequadamente foi o ambiente em que se solucionava o sudoku, pois aspectos como silêncio, podem influênciar no desempenho dos participantes do experimento. Contudo, mesmo não apresentando resultados que são de fato confiáveis, conseguimos obter informações relativas ao assunto abordado, e este experimento pode servir de referencia para outros futuros experimentos com objetivo semelhante a este. Como sugestão para próximos experimentos com objetivos semelhantes ao nosso, sugerimos adotar medidas a fim de assegurar que os participantes realizem o experimento em ambientes similares, assim como, selecionar participantes com o mesmo nível de experiência no teste que será realizado.
 
 ```{r echo=FALSE}
 par(mfrow=c(2,2))
@@ -291,3 +293,27 @@ plot(fit)
 \begin{center}
 `r legenda_graf4`
 \end{center}
+
+\newpage
+#Anexo
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=7.5cm, height=7cm]{sudoku/sudoku.jpg}
+\end{figure}
+
+\begin{center}
+`r legenda_imagem1`
+\end{center}
+
+
+
+| 1º Quadrado Latino: | Dia da Semana | Pessoa |    |    | 2º Quadrado Latino: | Dia da Semana | Pessoa |    |    | 3º Quadrado Latino: | Dia da Semana | Pessoa |    |    |
+|---------------------|---------------|--------|----|----|---------------------|---------------|--------|----|----|---------------------|---------------|--------|----|----|
+|                     |               | A     | B | C |                     |               | D     | E | F |                     |               | G     | H | I |
+|                     | Seg           | T      | N  | M  |                     | Seg           | T      | M  | N  |                     | Seg           | N      | T  | M  |
+|                     | Qua           | N      | M  | T  |                     | Qua           | N      | T  | M  |                     | Qua           | M      | N  | T  |
+|                     | Sex           | M      | T  | N  |                     | Sex           | M      | N  | T  |                     | Sex           | T      | M  | N  |
+
+Seg: Segunda-feira  Qua: Quarta-feira   Sex:Sexta-feira  Pi= Pessoa i. (i=1,...,9)  M: Período da manhã   T: Período da Tarde   N: Período da Noite  
+**Observação**: Os quadrados latinos acima foram confeccionados a partir do código para aleatorização de quadrados latinos disponibilizado na página do curso.
